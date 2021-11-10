@@ -7,20 +7,21 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { Switch, Route, useRouteMatch } from "react-router-dom";
+// import MailIcon from '@mui/icons-material/Mail';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
-// import userEvent from '@testing-library/user-event';
+import DashboardHome from '../DashboardHome/DashboardHome';
+import MyOrders from '../MyOrders/MyOrders';
+import Review from '../Review/Review';
+import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
 
 const drawerWidth = 240;
 
 export default function Dashboard() {
-  const { logOut, user } = useAuth()
+  const { logOut, user } = useAuth();
+  let { path, url } = useRouteMatch();
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -30,7 +31,7 @@ export default function Dashboard() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Permanent drawer
+            Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -48,20 +49,37 @@ export default function Dashboard() {
       >
         <Toolbar />
         <Divider />
-        <List>
-          <Box> {user.displayName}</Box>
-          <br />
-          <Link to="#"><Button color="inherit"><MailIcon /> Pay</Button></Link>
-          <br />
-          <Link style={{ textDecoration: 'none' }} to="#"><Button color="inherit">My Orders</Button></Link>
-          <br />
-          <Link to="#"><Button color="inherit">Review</Button></Link>
-          <br />
-          <Link to="/"><Button color="inherit">Continue to shopping</Button></Link>
-          <br />
-          <Button color="inherit" onClick={logOut}>Log Out</Button>
+        {user.email && <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
+          <List>
+            <Box> {user.displayName}</Box>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}`}><Button color="inherit" sx={{ px: 0 }}>Pay</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/review`}><Button color="inherit">Review</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to="/"><Button color="inherit">Continue to shopping</Button></Link>
+            <br />
+            <Button color="inherit" onClick={logOut}>Log Out</Button>
+          </List>
+        </Box>}
 
-        </List>
+        <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
+          <List>
+            <Box> {user.displayName}</Box>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageAllOrders`}><Button color="inherit" sx={{ px: 0 }}>Manage All Orders</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addAProduct`}><Button color="inherit">Add A Product</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
+            <br />
+            <Button color="inherit" onClick={logOut}>Log Out</Button>
+          </List>
+        </Box>
 
       </Drawer>
       <Box
@@ -69,33 +87,23 @@ export default function Dashboard() {
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Switch>
+          <Route exact path={path}>
+            <DashboardHome />
+          </Route>
+          <Route path={`${path}/makeAdmin`}>
+            <MakeAdmin />
+          </Route>
+          <Route path={`${path}/myOrders`}>
+            <MyOrders />
+          </Route>
+          <Route path={`${path}/review`}>
+            <Review />
+          </Route>
+          <Route path={`${path}/review`}>
+            <Review />
+          </Route>
+        </Switch>
       </Box>
     </Box>
   );

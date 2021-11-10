@@ -48,19 +48,19 @@ const Navigation = (props) => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               News
             </Typography>
-            <Link to="/home"><Button color="inherit">Home</Button></Link>
-            <Link to="/explore"><Button color="inherit">Explore</Button></Link>
+            <Link style={{ textDecoration: 'none', color:'white' }}to="/home"><Button color="inherit">Home</Button></Link>
+            <Link style={{ textDecoration: 'none', color:'white' }}to="/explore"><Button color="inherit">Explore</Button></Link>
             
             {user?.email &&
               <Box>
-                <Link to="/dashboard"><Button color="inherit">Dashboard</Button></Link>
+                <Link style={{ textDecoration: 'none', color:'white' }}to="/dashboard"><Button color="inherit">Dashboard</Button></Link>
                 <Button sx={{color:'white'}}  color="inherit">{user.displayName}</Button>
                 {/* <img style={{ width:50, }} src={user.photoURL} alt="" /> */}
               </Box>}
 
             {user.email ?
               <Button color="inherit" onClick={logOut}>Log Out</Button>
-              : <Link to="/login"><Button color="inherit">Login</Button></Link>}
+              : <Link style={{ textDecoration: 'none', color:'white' }}to="/login"><Button color="inherit">Login</Button></Link>}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
