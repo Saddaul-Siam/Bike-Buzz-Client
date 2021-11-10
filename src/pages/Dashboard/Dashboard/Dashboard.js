@@ -16,6 +16,9 @@ import DashboardHome from '../DashboardHome/DashboardHome';
 import MyOrders from '../MyOrders/MyOrders';
 import Review from '../Review/Review';
 import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
+import ManageAllOrders from '../Admin/ManageAllOrders/ManageAllOrders';
+import AddAProducts from '../Admin/AddAProducts/AddAProducts';
+import ManageProducts from '../Admin/ManageProducts/ManageProducts';
 
 const drawerWidth = 240;
 
@@ -91,17 +94,24 @@ export default function Dashboard() {
           <Route exact path={path}>
             <DashboardHome />
           </Route>
-          <Route path={`${path}/makeAdmin`}>
-            <MakeAdmin />
-          </Route>
+
           <Route path={`${path}/myOrders`}>
             <MyOrders />
           </Route>
           <Route path={`${path}/review`}>
             <Review />
           </Route>
-          <Route path={`${path}/review`}>
-            <Review />
+          <Route path={`${path}/manageAllOrders`}>
+            <ManageAllOrders />
+          </Route>
+          <Route path={`${path}/addAProduct`}>
+            <AddAProducts />
+          </Route>
+          <Route path={`${path}/manageProducts`}>
+            <ManageProducts />
+          </Route>
+          <Route path={`${path}/makeAdmin`}>
+            <MakeAdmin />
           </Route>
         </Switch>
       </Box>
