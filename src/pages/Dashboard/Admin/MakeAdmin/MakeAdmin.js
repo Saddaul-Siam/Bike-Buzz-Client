@@ -1,26 +1,54 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { Alert, Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { Button, Container, TextField, Typography } from '@mui/material';
+// import useAuth from '../../../../Hooks/useAuth';
 
 const MakeAdmin = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const [email, setEmail] = useState('');
+  const [success, setSuccess] = useState(false);
+  // const { token } = useAuth();
+
+  const handleOnBlur = e => {
+    setEmail(e.target.value);
+  };
+
+  const handleAdminSubmit = e => {
+    const user = { email };
+    fetch('http://localhost:5000/users/admin', {
+      method: 'PUT',
+      headers: {
+        // 'authorization': `Bearer ${token}`,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount) {
+          console.log(data);
+          setSuccess(true);
+        }
+      })
+
+    e.preventDefault()
+  }
 
   return (
-    <div>
-      <h2>make Admin</h2>
-      <Container>
-        <Box >
-          <Typography variant="h5" sx={{ fontWeight: 600, pb: 3 }}>Make A Admin</Typography>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <TextField style={{ width: '100%', height: '50px' }} label="Email"  {...register("name")} variant="filled" />
-            {errors.exampleRequired && <span>This field is required</span>}
-            <Button sx={{ mt: 3 }} variant="outlined" type="submit">Make Admin</Button>
-          </form>
-        </Box>
-      </Container>
-    </div>
+    <Container>
+      <Box >
+        <Typography variant="h5" sx={{ fontWeight: 600, pb: 3 }}>Make A Admin</Typography>
+        <form onSubmit={handleAdminSubmit}>
+          <TextField
+            sx={{ width: '50%' }}
+            label="Email"
+            type="email"
+            onBlur={handleOnBlur}
+            variant="standard" />
+          <Button type="submit" variant="contained">Make Admin</Button>
+        </form>
+        {success && <Alert severity="success">Made Admin successfully!</Alert>}
+      </Box>
+    </Container>
   );
 };
 

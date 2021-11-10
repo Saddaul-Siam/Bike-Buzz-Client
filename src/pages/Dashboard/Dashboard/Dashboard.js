@@ -21,13 +21,13 @@ import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
 import ManageAllOrders from '../Admin/ManageAllOrders/ManageAllOrders';
 import AddAProducts from '../Admin/AddAProducts/AddAProducts';
 import ManageProducts from '../Admin/ManageProducts/ManageProducts';
-const drawerWidth = 200;
+const drawerWidth = 300;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
-  const { user, logOut } = useAuth();
+  const { user, logOut, admin } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -37,7 +37,7 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
-      {user.email && <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
+      {admin ? "" : <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
         <List>
           <Typography variant="body1" sx={{ fontWeight: 600 }}>Welcome {user.displayName}</Typography>
           <br />
@@ -53,22 +53,24 @@ function Dashboard(props) {
         </List>
       </Box >}
 
-      <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
-        <List>
-          <Typography variant="body1" sx={{ fontWeight: 600 }}>Welcome {user.displayName}</Typography>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageAllOrders`}><Button color="inherit" sx={{ px: 0 }}>Manage All Orders</Button></Link>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addAProduct`}><Button color="inherit">Add A Product</Button></Link>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
-          <br />
-          <Button color="inherit" onClick={logOut}>Log Out</Button>
-        </List>
-      </Box >
-    </div>
+      {
+        admin && <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
+          <List>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>Welcome {user.displayName}</Typography>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageAllOrders`}><Button color="inherit" sx={{ px: 0 }}>Manage All Orders</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addAProduct`}><Button color="inherit">Add A Product</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+            <br />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
+            <br />
+            <Button color="inherit" onClick={logOut}>Log Out</Button>
+          </List>
+        </Box >
+      }
+    </div >
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
