@@ -54,7 +54,7 @@ export default function Dashboard() {
         <Divider />
         {user.email && <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
           <List>
-            <Box> {user.displayName}</Box>
+            <Typography variant="body1" sx={{fontWeight:600}}>Welcome {user.displayName}</Typography>
             <br />
             <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}`}><Button color="inherit" sx={{ px: 0 }}>Pay</Button></Link>
             <br />
@@ -70,7 +70,7 @@ export default function Dashboard() {
 
         <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
           <List>
-            <Box> {user.displayName}</Box>
+          <Typography variant="body1" sx={{fontWeight:600}}>Welcome {user.displayName}</Typography>
             <br />
             <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageAllOrders`}><Button color="inherit" sx={{ px: 0 }}>Manage All Orders</Button></Link>
             <br />
