@@ -27,15 +27,14 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const Service = ({ data }) => {
+const Product = ({pd}) => {
   // console.log(data);
-  const { img } = data;
+  const { img } = pd;
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
   return (
     <Grid item sx={12} sm={6} md={4} lg={3}>
       <Card sx={{ maxWidth: 345 }}>
@@ -114,6 +113,6 @@ const Service = ({ data }) => {
       </Card>
     </Grid>
   );
-}
+};
 
-export default Service
+export default Product;

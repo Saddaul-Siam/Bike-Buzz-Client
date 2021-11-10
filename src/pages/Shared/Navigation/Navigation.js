@@ -8,6 +8,8 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import { Button, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
+import { Box } from '@mui/system';
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -27,7 +29,8 @@ HideOnScroll.propTypes = {
   window: PropTypes.func,
 };
 
-export default function HideAppBar(props) {
+const Navigation = (props) => {
+  const { user, logOut } = useAuth()
   return (
     <React.Fragment>
       <CssBaseline />
@@ -47,8 +50,17 @@ export default function HideAppBar(props) {
             </Typography>
             <Link to="/home"><Button color="inherit">Home</Button></Link>
             <Link to="/explore"><Button color="inherit">Explore</Button></Link>
-            <Link to="/dashboard"><Button color="inherit">Dashboard</Button></Link>
-            <Link to="/login"><Button color="inherit">Login</Button></Link>
+            
+            {user?.email &&
+              <Box>
+                <Link to="/dashboard"><Button color="inherit">Dashboard</Button></Link>
+                <Button sx={{color:'white'}}  color="inherit">{user.displayName}</Button>
+                {/* <img style={{ width:50, }} src={user.photoURL} alt="" /> */}
+              </Box>}
+
+            {user.email ?
+              <Button color="inherit" onClick={logOut}>Log Out</Button>
+              : <Link to="/login"><Button color="inherit">Login</Button></Link>}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
@@ -56,3 +68,4 @@ export default function HideAppBar(props) {
     </React.Fragment>
   );
 }
+export default Navigation;

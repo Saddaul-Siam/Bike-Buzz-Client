@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import initializeFirebase from "../Pages/Login/Firebase/Firebase.init";
 import { getAuth, createUserWithEmailAndPassword, signOut, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile, getIdToken } from "firebase/auth";
+import initializeFirebase from "../Firebase/Firebase.init";
 
 initializeFirebase();
 
@@ -8,8 +8,8 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [authError, setAuthError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  // const [admin, setAdmin] = useState(false);
-  // const [token, setToken] = useState('');
+  const [admin, setAdmin] = useState(false);
+  const [token, setToken] = useState('');
 
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth();
@@ -60,6 +60,7 @@ const useFirebase = () => {
     setIsLoading(true)
     signInWithPopup(auth, googleProvider)
       .then((result) => {
+        console.log(result);
         const user = result.user;
         saveUser(user.email, user.displayName, 'PUT');
         setAuthError("");
@@ -76,10 +77,10 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        // getIdToken(user)
-        //   .then(idToken => {
-        //     setToken(idToken);
-        //   })
+        getIdToken(user)
+          .then(idToken => {
+            setToken(idToken);
+          })
       } else {
         setUser({})
       }
@@ -111,22 +112,22 @@ const useFirebase = () => {
       .then(result => console.log(result))
   };
 
-  // useEffect(() => {
-  //   fetch(`https://doctors-portal-24.herokuapp.com/users/${user.email}`)
-  //     .then(res => res.json())
-  //     .then(data => setAdmin(data.admin))
-  // }, [user.email])
+  useEffect(() => {
+    fetch(`https://doctors-portal-24.herokuapp.com/users/${user.email}`)
+      .then(res => res.json())
+      .then(data => setAdmin(data.admin))
+  }, [user.email])
 
   return {
     user,
-    // admin,
-    // token,
-    // setUser,
+    admin,
+    token,
+    setUser,
     registerUser,
     loginUser,
     authError,
     isLoading,
-    // setIsLoading,
+    setIsLoading,
     signInWithGoogle,
     logOut,
   }
