@@ -7,8 +7,22 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Review = () => {
   const { user } = useAuth()
-  const { register, handleSubmit,  formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const onSubmit = data => {
+    // console.log(data)
+    fetch(`http://localhost:5000/addReview`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result)
+        if (result.acknowledged === true) {
+          reset()
+        }
+      })
+  };
 
   const useStyle = makeStyles({
     rating: {
