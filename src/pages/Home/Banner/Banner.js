@@ -10,26 +10,26 @@ const Banner = () => {
 
   const useStyle = makeStyles({
     root: {
-      height: '100vh',
-      marginTop: '30px',
+      height: '90vh',
+      marginTop: '5px',
     },
     background: {
       backgroundImage: `url(${bg}), linear-gradient(#e7dfdf,#fff)`,
       backgroundBlendMode: 'overlay',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
+      backgroundSize: 'cover'
     }
   })
 
   const { root, background } = useStyle()
 
   return (
-    <Box className={root,background} >
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={6} lg={6} sx={{ border: 1 }}>
+    <Box className={background} >
+      <Grid className={root} container spacing={2}>
+        <Grid item xs={12} sm={6} md={6} lg={6} >
           <img width="100%" src="https://i.ibb.co/fXkPw6g/banner.png" alt="" />
         </Grid>
-        <Grid item xs={12} sm={6} md={6} lg={6} sx={{ border: 1, display: 'flex', alignItems: 'center' }}>
+        <Grid item xs={12} sm={6} md={6} lg={6} sx={{  display: 'flex', alignItems: 'center' }}>
           <Box sx={{ alignItems: 'center' }} >
             <Typography variant="h2" sx={{ fontWeight: 600 }}>
               EVERYTHING <br /> MOTORSPORTS

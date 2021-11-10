@@ -46,7 +46,7 @@ const Navigation = (props) => {
             >
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              News
+             BIKE BUZZ
             </Typography>
             <Link style={{ textDecoration: 'none', color:'white' }}to="/home"><Button color="inherit">Home</Button></Link>
             <Link style={{ textDecoration: 'none', color:'white' }}to="/explore"><Button color="inherit">Explore</Button></Link>

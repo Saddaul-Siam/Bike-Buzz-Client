@@ -79,7 +79,6 @@ const useFirebase = () => {
         setUser(user);
         getIdToken(user)
           .then(idToken => {
-            console.log(idToken);
             localStorage.setItem('idToken', idToken);
           })
       } else {
