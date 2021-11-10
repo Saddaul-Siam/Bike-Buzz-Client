@@ -10,7 +10,7 @@ import Register from './pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider';
 import Explore from './pages/Explore/Explore/Explore';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 function App() {
   return (
     <AuthProvider>
