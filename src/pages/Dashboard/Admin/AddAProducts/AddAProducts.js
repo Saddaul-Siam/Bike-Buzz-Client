@@ -3,9 +3,7 @@ import { makeStyles } from '@mui/styles';
 import { useForm } from "react-hook-form";
 import { Box } from '@mui/system';
 import { Button, Container, TextField, Typography } from '@mui/material';
-import useAuth from '../../../../Hooks/useAuth';
 const AddAProducts = () => {
-  const { user } = useAuth();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
