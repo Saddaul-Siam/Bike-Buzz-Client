@@ -60,8 +60,9 @@ const useFirebase = () => {
     setIsLoading(true)
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        console.log(result);
         const user = result.user;
+        
+        // save to database
         saveUser(user.email, user.displayName, 'PUT');
         setAuthError("");
         const destination = location?.state?.from || '/';
@@ -77,10 +78,10 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        getIdToken(user)
-          .then(idToken => {
-            setToken(idToken);
-          })
+        // getIdToken(user)
+        //   .then(idToken => {
+        //     setToken(idToken);
+        //   })
       } else {
         setUser({})
       }
@@ -103,9 +104,9 @@ const useFirebase = () => {
   // save user information
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch(`https://doctors-portal-24.herokuapp.com/users`, {
+    fetch(`http://localhost:5000/users`, {
       method: method,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'content-Type': 'application/json' },
       body: JSON.stringify(user)
     })
       .then(res => res.json())
@@ -113,7 +114,7 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
-    fetch(`https://doctors-portal-24.herokuapp.com/users/${user.email}`)
+    fetch(`http://localhost:5000/users/${user.email}`)
       .then(res => res.json())
       .then(data => setAdmin(data.admin))
   }, [user.email])
