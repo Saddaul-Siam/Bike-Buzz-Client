@@ -143,20 +143,16 @@ export default function Navigation(props) {
             >
               BIKE BUZZ
             </Typography>
-
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Link style={{ textDecoration: 'none', color: 'white' }} to="/home"><Button color="inherit">Home</Button></Link>
-              <Link style={{ textDecoration: 'none', color: 'white' }} to="/explore"><Button color="inherit">Explore</Button></Link>
-
+              <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/home">Home</Link></Button>
+              <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/explore">Explore</Link></Button>
               {user?.email &&
-                <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><Button color="inherit">Dashboard</Button></Link>
-              }
-
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">Dashboard</Link></Button>}
               {user.email ?
                 <Button color="inherit" onClick={logOut}>Log Out</Button>
                 : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit">Login</Button></Link>}
-              <IconButton
+              {user.email && <IconButton
                 size="large"
                 edge="end"
                 aria-label="account of current user"
@@ -166,7 +162,7 @@ export default function Navigation(props) {
                 color="inherit"
               >
                 <AccountCircle />
-              </IconButton>
+              </IconButton>}
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
