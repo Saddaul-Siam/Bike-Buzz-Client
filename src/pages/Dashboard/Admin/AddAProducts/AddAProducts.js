@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 import { Box } from '@mui/system';
 import { Button, Container, TextField, Typography } from '@mui/material';
 const AddAProducts = () => {
-
+  const Swal = require('sweetalert2');
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data => {
-    // console.log(data)
     fetch(`http://localhost:5000/addProducts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -15,10 +14,17 @@ const AddAProducts = () => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result)
-        if (result.acknowledged === true) {
-          reset()
+        if (result.acknowledged) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Products added successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
+      }).finally(() => {
+        reset()
       })
   };
 
@@ -38,15 +44,15 @@ const AddAProducts = () => {
         <Typography variant="h5" sx={{ fontWeight: 600, pb: 3 }}>Add a Products</Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
 
-          <TextField style={{ width: '100%' }} label="Products name"  {...register("name")} type="text" variant="outlined" />
+          <TextField style={{ width: '100%' }} label="Products name"  {...register("name")} type="text" variant="outlined" required/>
           <br />
           <br />
-          <TextField style={{ width: '100%' }} label="Price"  {...register("price")} type="number" variant="outlined" />
+          <TextField style={{ width: '100%' }} label="Price"  {...register("price")} type="number" variant="outlined" required/>
           <br />
           <br />
-          <TextField style={{ width: '100%' }} label="Images url"  {...register("img")} type="text" variant="outlined" />
+          <TextField style={{ width: '100%' }} label="Images url"  {...register("img")} type="text" variant="outlined" required/>
 
-          <textarea className={textArea} rows={5} placeholder="Description" {...register("description")} /> <br />
+          <textarea className={textArea} rows={5} placeholder="Description" {...register("description")} /> <br required/>
 
           {errors.exampleRequired && <span>This field is required</span>}
           <Button variant="outlined" type="submit">Submit</Button>

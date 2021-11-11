@@ -48,9 +48,9 @@ function Dashboard(props) {
           <br />
           <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/review`}><Button color="inherit">Review</Button></Link>
           <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to="/"><Button color="inherit">Continue to shopping</Button></Link>
-          <br />
           <Button color="inherit" onClick={logOut}>Log Out</Button>
+          <br />
+          <Link style={{ textDecoration: 'none', color: 'black' }} to="/explore"><Button color="inherit">Continue to shopping</Button></Link>
         </List>
       </Box >}
 

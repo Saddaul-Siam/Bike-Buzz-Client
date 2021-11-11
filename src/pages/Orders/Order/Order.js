@@ -8,7 +8,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 const Order = () => {
   const { ordersId } = useParams();
   const [order, setOrder] = useState({});
-
+  const Swal = require('sweetalert2');
 
   const { user } = useAuth()
   useEffect(() => {
@@ -30,7 +30,13 @@ const Order = () => {
       .then(res => res.json())
       .then(data => {
         if (data.acknowledged) {
-          alert('order added')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your order added successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
           reset()
         }
         console.log(data);

@@ -51,7 +51,7 @@ const Product = ({ pd }) => {
         </CardContent>
         <CardActions disableSpacing>
           <Typography variant="h6"><AttachMoneyIcon />{price}</Typography>
-          <Link to={`/orders/${_id}`}><Button sx={{ ml: 5 }} variant="contained">Purchase</Button></Link>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`/orders/${_id}`}><Button sx={{ ml: 5 }} variant="contained">Purchase</Button></Link>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

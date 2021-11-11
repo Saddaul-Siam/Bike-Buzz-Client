@@ -8,8 +8,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useAuth from '../../../Hooks/useAuth';
 import MuiButton from '../../../StyledComponent/MuiButton';
+import Swal from 'sweetalert2'
+
 
 const MyOrders = () => {
+  const Swal = require('sweetalert2')
   const { user } = useAuth();
   const [orders, setOrders] = useState([])
 
@@ -17,20 +20,36 @@ const MyOrders = () => {
     fetch(`http://localhost:5000/order/${user.email}`)
       .then(res => res.json())
       .then(data => setOrders(data));
-  }, [user.email]);
+  }, [user.email, orders]);
 
   const handleDelete = (id) => {
-    console.log(id);
-    fetch(`http://localhost:5000/order/${id}`, {
-      method: 'DELETE',
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/order/${id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.acknowledged) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+      }
     })
-      .then(res => res.json())
-      .then(data => {
-        if (data.acknowledged) {
-          alert("delete successfully")
-          window.location.reload()
-        }
-      })
+
   }
   return (
     <div>

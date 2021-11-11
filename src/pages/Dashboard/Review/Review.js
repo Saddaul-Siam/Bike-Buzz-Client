@@ -49,13 +49,16 @@ const Review = () => {
       <Box >
         <Typography variant="h5" sx={{ fontWeight: 600, pb: 3 }}>Review our services</Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField style={{ width: '100%', height: '50px' }} label="Name" value={user.displayName} {...register("name")} variant="outlined" />
+          <TextField style={{ width: '100%', height: '50px' }} label="Name" value={user.displayName} {...register("name")} variant="outlined"  required/>
+          <br />
+          <br />
+          <TextField style={{ width: '100%', height: '50px' }} label="Email" value={user.email} {...register("email")} variant="outlined"  required/>
 
-          <textarea className={textArea} rows={5} placeholder="Review" {...register("review")} /> <br />
+          <textarea className={textArea} rows={5} placeholder="Review" {...register("review")}  required/> <br />
           <Typography variant="h6" sx={{ fontWeight: 600 }}>
             Please Rating now
           </Typography>
-          <select className={rating} {...register("rating")}>
+          <select className={rating} {...register("rating")} required>
             <option value="5">5</option>
             <option value="4">4</option>
             <option value="3">3</option>

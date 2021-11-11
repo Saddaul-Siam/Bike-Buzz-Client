@@ -1,15 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import CssBaseline from '@mui/material/CssBaseline';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
+import useAuth from '../../../Hooks/useAuth';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
-import { Button, IconButton } from '@mui/material';
-import { Link } from 'react-router-dom';
-import useAuth from '../../../Hooks/useAuth';
-import { Box } from '@mui/system';
+import PropTypes from 'prop-types';
+
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -29,43 +34,158 @@ HideOnScroll.propTypes = {
   window: PropTypes.func,
 };
 
-const Navigation = (props) => {
+export default function Navigation(props) {
   const { user, logOut } = useAuth()
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const menuId = 'primary-search-account-menu';
+
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      {user?.email && <MenuItem onClick={handleMenuClose}>{user.displayName}</MenuItem>}
+    </Menu>
+  );
+
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem>
+        <Link style={{ textDecoration: 'none', color: 'black' }} to="/home"><Button color="inherit">Home</Button></Link>
+      </MenuItem>
+      <MenuItem>
+        <Link style={{ textDecoration: 'none', color: 'black' }} to="/explore"><Button color="inherit">Explore</Button></Link>
+      </MenuItem>
+
+      {user?.email && <MenuItem> <Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard"><Button color="inherit">Dashboard</Button></Link> </MenuItem>}
+
+      <MenuItem>
+        {user.email ?
+          <Button color="inherit" onClick={logOut}>Log Out</Button>
+          : <Link style={{ textDecoration: 'none', color: 'black' }} to="/login"><Button color="inherit">Login</Button></Link>}
+      </MenuItem>
+
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <p>Profile</p>
+      </MenuItem>
+    </Menu>
+  );
+
+
   return (
-    <React.Fragment>
-      <CssBaseline />
+    <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll {...props}>
         <AppBar>
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-             BIKE BUZZ
-            </Typography>
-            <Link style={{ textDecoration: 'none', color:'white' }}to="/home"><Button color="inherit">Home</Button></Link>
-            <Link style={{ textDecoration: 'none', color:'white' }}to="/explore"><Button color="inherit">Explore</Button></Link>
-            
-            {user?.email &&
-              <Box>
-                <Link style={{ textDecoration: 'none', color:'white' }}to="/dashboard"><Button color="inherit">Dashboard</Button></Link>
-                <Button sx={{color:'white'}}  color="inherit">{user.displayName}</Button>
-                {/* <img style={{ width:50, }} src={user.photoURL} alt="" /> */}
-              </Box>}
 
-            {user.email ?
-              <Button color="inherit" onClick={logOut}>Log Out</Button>
-              : <Link style={{ textDecoration: 'none', color:'white' }}to="/login"><Button color="inherit">Login</Button></Link>}
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+            >
+              BIKE BUZZ
+            </Typography>
+
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <Link style={{ textDecoration: 'none', color: 'white' }} to="/home"><Button color="inherit">Home</Button></Link>
+              <Link style={{ textDecoration: 'none', color: 'white' }} to="/explore"><Button color="inherit">Explore</Button></Link>
+
+              {user?.email &&
+                <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><Button color="inherit">Dashboard</Button></Link>
+              }
+
+              {user.email ?
+                <Button color="inherit" onClick={logOut}>Log Out</Button>
+                : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit">Login</Button></Link>}
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Toolbar />
-    </React.Fragment>
+      {renderMobileMenu}
+      {renderMenu}
+    </Box>
   );
 }
-export default Navigation;
+
