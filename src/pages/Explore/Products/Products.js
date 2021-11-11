@@ -1,15 +1,22 @@
-import { Container, Grid } from '@mui/material';
-import React from 'react';
-import { services } from '../../../data/data';
+import { Container, Grid, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 
 const Products = () => {
-  const Products = services
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then(res => res.json())
+      .then(data => setProducts(data))
+  }, [])
   return (
     <Container>
+      <Typography variant="h4" sx={{ fontWeight: 600, color: '#666', py: 3 }}>
+        WORLD BEST BIKE COLLECTIONS
+      </Typography>
       <Grid container spacing={2} >
         {
-          Products.map((pd) => <Product pd={pd}></Product>)
+          products.map((pd) => <Product pd={pd}></Product>)
         }
       </Grid>
     </Container>

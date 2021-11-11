@@ -1,0 +1,15 @@
+.images {
+  /* width: 300px; */
+  height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+ 
+.images img {
+  width: 100%;
+  transition: 0.6s all ease-in-out;
+}
+ 
+.images:hover img {
+  transform: scale(1.3);
+}
