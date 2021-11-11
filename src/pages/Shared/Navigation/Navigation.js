@@ -9,7 +9,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
@@ -131,57 +131,60 @@ export default function Navigation(props) {
 
 
   return (
+
     <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll {...props}>
         <AppBar>
-          <Toolbar>
-
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-            >
-              BIKE BUZZ
-            </Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/home">Home</Link></Button>
-              <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/explore">Explore</Link></Button>
-              {user?.email &&
-                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">Dashboard</Link></Button>}
-              {user.email ?
-                <Button color="inherit" onClick={logOut}>Log Out</Button>
-                : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit">Login</Button></Link>}
-              {user.email && <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
+          <Container>
+            <Toolbar sx={{p:"0 !important"}}>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
               >
-                <AccountCircle />
-              </IconButton>}
-            </Box>
-            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-            </Box>
-          </Toolbar>
+                BIKE BUZZ
+              </Typography>
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/home">Home</Link></Button>
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/explore">Explore</Link></Button>
+                {user?.email &&
+                  <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">Dashboard</Link></Button>}
+                {user.email ?
+                  <Button color="inherit" onClick={logOut}>Log Out</Button>
+                  : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit">Login</Button></Link>}
+                {user.email && <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>}
+              </Box>
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="inherit"
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </Container>
         </AppBar>
       </HideOnScroll>
       {renderMobileMenu}
       {renderMenu}
     </Box>
+
   );
 }
 

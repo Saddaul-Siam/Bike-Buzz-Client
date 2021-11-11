@@ -50,7 +50,15 @@ const ManageAllOrder = ({ order }) => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result);
+        if (result.acknowledged) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Status update successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       })
 
   };
@@ -78,7 +86,8 @@ const ManageAllOrder = ({ order }) => {
         <TableCell width="50px">
           <form onSubmit={handleSubmit(onSubmit)}>
             <select className={option} {...register("status")}>
-              <option className={option} value={status}>{status}</option>
+              <option value={status}>{status}</option>
+              <option value="pending">pending</option>
               <option value="approved">approved</option>
               <option value="done">done</option>
             </select>
