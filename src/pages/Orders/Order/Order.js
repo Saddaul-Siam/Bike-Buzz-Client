@@ -56,7 +56,7 @@ const Order = () => {
 
   const { input } = useStyle()
   return (
-    <Container>
+    <Container sx={{mt:10}}>
       <Navigation></Navigation>
       <Typography variant="h4" sx={{ marginTop: 3, fontWeight: 600 }}>Orders pages </Typography>
       <Grid container spacing={2}>

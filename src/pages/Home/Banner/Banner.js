@@ -11,7 +11,7 @@ const Banner = () => {
   const useStyle = makeStyles({
     root: {
       height: '90vh',
-      marginTop: '5px',
+      marginTop: '65px',
     },
     background: {
       backgroundImage: `url(${bg}), linear-gradient(#e7dfdf,#fff)`,

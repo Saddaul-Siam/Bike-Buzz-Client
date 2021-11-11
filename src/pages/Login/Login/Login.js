@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <>
     <Navigation></Navigation>
-    <Container>
+    <Container sx={{mt:10}}>
       <Grid container spacing={2}>
         <Grid item sx={{ mt: 8 }} xs={12} md={6}>
           <Typography variant="body1" gutterBottom>Login</Typography>
