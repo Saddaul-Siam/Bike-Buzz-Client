@@ -11,6 +11,7 @@ import AuthProvider from './Context/AuthProvider';
 import Explore from './pages/Explore/Explore/Explore';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
+import Orders from './pages/Orders/Orders/Orders'
 function App() {
   return (
     <AuthProvider>
@@ -22,8 +23,11 @@ function App() {
           <Route path="/home">
             <Home></Home>
           </Route>
-          <PrivateRoute path="/explore">
+          <PrivateRoute exact path="/explore">
             <Explore></Explore>
+          </PrivateRoute>
+          <PrivateRoute path="/orders/:ordersId">
+            <Orders></Orders>
           </PrivateRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
