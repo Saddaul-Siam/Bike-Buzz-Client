@@ -12,7 +12,7 @@ const Order = () => {
 
   const { user } = useAuth()
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${ordersId}`)
+    fetch(`https://bike-buzz.herokuapp.com/product/${ordersId}`)
       .then(res => res.json())
       .then(data => setOrder(data))
   }, [ordersId]);
@@ -23,7 +23,7 @@ const Order = () => {
     data.price = order.price
     data.status = "pending"
     console.log(data);
-    fetch(`http://localhost:5000/order`, {
+    fetch(`https://bike-buzz.herokuapp.com/order`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

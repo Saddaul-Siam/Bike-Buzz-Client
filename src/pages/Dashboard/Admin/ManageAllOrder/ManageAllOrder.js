@@ -23,7 +23,7 @@ const ManageAllOrder = ({ order }) => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://bike-buzz.herokuapp.com/order/${id}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
         })
@@ -43,7 +43,7 @@ const ManageAllOrder = ({ order }) => {
   const [statusId, setStatusId] = useState(null);
 
   const onSubmit = data => {
-    fetch(`http://localhost:5000/order/${statusId}`, {
+    fetch(`https://bike-buzz.herokuapp.com/order/${statusId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

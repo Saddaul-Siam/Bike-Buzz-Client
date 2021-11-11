@@ -36,7 +36,7 @@ const Service = ({ data }) => {
 
 
   return (
-    <Grid item sx={12} sm={6} md={4} lg={4}>
+    <Grid item xs={12} sm={6} md={4} lg={4}>
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader sx={{ height: '60px' }} title={name} />
         <Box className="images">

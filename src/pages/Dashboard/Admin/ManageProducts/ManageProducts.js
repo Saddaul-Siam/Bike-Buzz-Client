@@ -12,7 +12,7 @@ import { Typography } from '@mui/material';
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/products`)
+    fetch(`https://bike-buzz.herokuapp.com/products`)
       .then(res => res.json())
       .then(data => setProducts(data))
   }, [products])
@@ -22,18 +22,18 @@ const ManageProducts = () => {
       <Typography sx={{ fontWeight: 'bold' }} variant="h4">Manage Products</Typography>
       <Typography sx={{ py: 3, fontWeight: 600 }} variant="body1">Products Here {products.length}</Typography>
 
-      <TableContainer TableContainer component={Paper} >
+      <TableContainer component={Paper} >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell width="50px" align="left">Price</TableCell>
-              <TableCell width="50px" align="left">Product id</TableCell>
-              <TableCell width="50px" align="left">Action</TableCell>
+              <TableCell width="50px">Price</TableCell>
+              <TableCell width="50px">Product id</TableCell>
+              <TableCell width="50px">Action</TableCell>
             </TableRow>
           </TableHead>
           {
-            products.map(product => <ManageProduct product={product}></ManageProduct>)
+            products.map(product => <ManageProduct key={product._id} product={product}></ManageProduct>)
           }
         </Table>
       </TableContainer >

@@ -8,7 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useAuth from '../../../Hooks/useAuth';
 import MuiButton from '../../../StyledComponent/MuiButton';
-import Swal from 'sweetalert2'
 
 
 const MyOrders = () => {
@@ -17,7 +16,7 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/order/${user.email}`)
+    fetch(`https://bike-buzz.herokuapp.com/order/${user.email}`)
       .then(res => res.json())
       .then(data => setOrders(data));
   }, [user.email, orders]);
@@ -34,7 +33,7 @@ const MyOrders = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://bike-buzz.herokuapp.com/order/${id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())

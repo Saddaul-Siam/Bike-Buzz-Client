@@ -19,7 +19,7 @@ const ManageProduct = ({ product }) => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/deleteProducts/${id}`, {
+        fetch(`https://bike-buzz.herokuapp.com/deleteProducts/${id}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' }
         })
@@ -36,14 +36,14 @@ const ManageProduct = ({ product }) => {
       }
     })
   }
-  
+
   return (
     <TableBody>
       <TableRow>
-        <TableCell width="50px" align="">{name}</TableCell>
-        <TableCell width="50px" align="">{price}</TableCell>
-        <TableCell width="50px" align="">{_id}</TableCell>
-        <TableCell width="50px" align=""><MuiButton onClick={() => handleClick(_id)}>Delete</MuiButton></TableCell>
+        <TableCell width="50px">{name}</TableCell>
+        <TableCell width="50px">{price}</TableCell>
+        <TableCell width="50px">{_id}</TableCell>
+        <TableCell width="50px"><MuiButton onClick={() => handleClick(_id)}>Delete</MuiButton></TableCell>
       </TableRow>
     </TableBody>
   );

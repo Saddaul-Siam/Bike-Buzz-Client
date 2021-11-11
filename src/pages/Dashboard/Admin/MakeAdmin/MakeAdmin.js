@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Alert, Button, Container, TextField, Typography } from '@mui/material';
+import {  Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-// import useAuth from '../../../../Hooks/useAuth';
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState('');
@@ -22,7 +21,7 @@ const MakeAdmin = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         const user = { email };
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://bike-buzz.herokuapp.com/users/admin', {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('idToken')}`,

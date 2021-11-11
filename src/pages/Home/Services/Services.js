@@ -5,18 +5,18 @@ import Service from '../Service/Service';
 const Services = () => {
   const [products, setProducts] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/mainServices")
+    fetch("https://bike-buzz.herokuapp.com/mainServices")
       .then(res => res.json())
       .then(data => setProducts(data))
   }, [])
   return (
     <Container>
-      <Typography variant="h4" sx={{ fontWeight: 600,color:'#666',py:3 }}>
+      <Typography variant="h4" sx={{ fontWeight: 600, color: '#666', py: 3 }}>
         WORLD BEST BIKE COLLECTIONS
       </Typography>
       <Grid container spacing={2} >
         {
-          products.map((data) => <Service data={data}></Service>)
+          products.map((data) => <Service key={data._id} data={data}></Service>)
         }
       </Grid>
     </Container>

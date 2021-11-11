@@ -14,7 +14,7 @@ const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://bike-buzz.herokuapp.com/orders`)
       .then(res => res.json())
       .then(data => setOrders(data))
   }, [orders])
@@ -38,7 +38,7 @@ const ManageAllOrders = () => {
             </TableRow>
           </TableHead>
           {
-            orders.map(order => <ManageAllOrder order={order}></ManageAllOrder>)
+            orders.map(order => <ManageAllOrder key={order._id} order={order}></ManageAllOrder>)
           }
         </Table>
       </TableContainer >
