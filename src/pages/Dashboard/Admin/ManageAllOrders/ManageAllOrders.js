@@ -17,7 +17,7 @@ const ManageAllOrders = () => {
     fetch(`http://localhost:5000/orders`)
       .then(res => res.json())
       .then(data => setOrders(data))
-  }, [orders])
+  }, [])
   return (
     <Box>
       <Typography sx={{ fontWeight: 'bold' }} variant="h4">Manage All Orders</Typography>

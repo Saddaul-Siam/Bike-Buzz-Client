@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import MuiButton from '../../../../StyledComponent/MuiButton';
+import { useForm } from "react-hook-form";
+import { makeStyles } from '@mui/styles';
+import { Button } from '@mui/material';
 
 const ManageAllOrder = ({ order }) => {
   const { name, status, email, productName, address, city, price, _id, } = order;
   const Swal = require('sweetalert2');
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -36,21 +40,57 @@ const ManageAllOrder = ({ order }) => {
       }
     })
   }
+  const [statusId, setStatusId] = useState(null);
 
+  const onSubmit = data => {
+    fetch(`http://localhost:5000/order/${statusId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+      })
+
+  };
+
+  const useStyle = makeStyles({
+    option: {
+      fontSize: "16px",
+      paddingRight: "10px",
+      paddingLeft: "10px",
+      paddingTop: "5px",
+      paddingBottom: "5px",
+
+    }
+  })
+  const { option } = useStyle()
   return (
     <TableBody>
       <TableRow>
-        <TableCell width="50px" align="">{name}</TableCell>
-        <TableCell width="50px" align="">{email}</TableCell>
-        <TableCell width="50px" align="">{price}</TableCell>
-        <TableCell width="50px" align="">{productName}</TableCell>
-        <TableCell width="50px" align="">{address}</TableCell>
-        <TableCell width="50px" align="">{city}</TableCell>
-        <TableCell width="50px" align="">{status}</TableCell>
-        <TableCell width="50px" align=""><MuiButton onClick={() => handleDelete(_id)}>Delete</MuiButton></TableCell>
+        <TableCell width="50px">{name}</TableCell>
+        <TableCell width="50px">{email}</TableCell>
+        <TableCell width="50px">{price}</TableCell>
+        <TableCell width="50px">{productName}</TableCell>
+        <TableCell width="50px">{address}</TableCell>
+        <TableCell width="50px">{city}</TableCell>
+        <TableCell width="50px">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <select className={option} {...register("status")}>
+              <option className={option} value={status}>{status}</option>
+              <option value="approved">approved</option>
+              <option value="done">done</option>
+            </select>
+            {errors.exampleRequired && <span>This field is required</span>}
+            <Button onClick={() => setStatusId(_id)} sx={{ ml: 1 }} type="submit" variant="contained" size="small" color="success">Update</Button>
+          </form>
+        </TableCell>
+        <TableCell width="50px"><MuiButton onClick={() => handleDelete(_id)}>Delete</MuiButton></TableCell>
       </TableRow>
     </TableBody>
   );
 };
 
 export default ManageAllOrder;
+
