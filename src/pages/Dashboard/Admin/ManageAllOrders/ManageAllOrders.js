@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Table from '@mui/material/Table';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
+import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 
 const ManageAllOrders = () => {
+
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/orders`)
+      .then(res => res.json())
+      .then(data => setOrders(data))
+  }, [orders])
   return (
-    <div>
-      <h2>manageAllOrders</h2>
-    </div>
+    <Box>
+      <Typography sx={{ fontWeight: 'bold' }} variant="h4">Manage All Orders</Typography>
+      <Typography sx={{ py: 3, fontWeight: 600 }} variant="body1">Orders Here {orders.length}</Typography>
+
+      <TableContainer TableContainer component={Paper} >
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>User Name</TableCell>
+              <TableCell>User Email</TableCell>
+              <TableCell width="50px" align="left">Price</TableCell>
+              <TableCell width="50px" align="left">Product Name</TableCell>
+              <TableCell width="50px" align="left">Address</TableCell>
+              <TableCell width="50px" align="left">City</TableCell>
+              <TableCell width="50px" align="left">Status</TableCell>
+              <TableCell width="50px" align="left">Action</TableCell>
+            </TableRow>
+          </TableHead>
+          {
+            orders.map(order => <ManageAllOrder order={order}></ManageAllOrder>)
+          }
+        </Table>
+      </TableContainer >
+    </Box >
   );
 };
 

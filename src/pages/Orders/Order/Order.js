@@ -17,10 +17,11 @@ const Order = () => {
       .then(data => setOrder(data))
   }, [ordersId]);
 
-  const { register, handleSubmit,reset, formState: { errors } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm()
   const onSubmit = data => {
     data.productName = order.name
     data.price = order.price
+    data.status = "pending"
     console.log(data);
     fetch(`http://localhost:5000/order`, {
       method: 'POST',
@@ -56,7 +57,7 @@ const Order = () => {
 
   const { input } = useStyle()
   return (
-    <Container sx={{mt:10}}>
+    <Container sx={{ mt: 10 }}>
       <Navigation></Navigation>
       <Typography variant="h4" sx={{ marginTop: 3, fontWeight: 600 }}>Orders pages </Typography>
       <Grid container spacing={2}>
