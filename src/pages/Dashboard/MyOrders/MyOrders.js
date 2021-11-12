@@ -61,6 +61,7 @@ const MyOrders = () => {
               <TableCell sx={{ fontWeight: 600, fontSize: 20 }}>Price</TableCell>
               <TableCell sx={{ fontWeight: 600, fontSize: 20 }}>User Name</TableCell>
               <TableCell sx={{ fontWeight: 600, fontSize: 20 }}>User Email</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20 }}>Status</TableCell>
               <TableCell sx={{ fontWeight: 600, fontSize: 20 }}>Action</TableCell>
             </TableRow>
           </TableHead>
@@ -74,6 +75,7 @@ const MyOrders = () => {
                 <TableCell>{order.price}</TableCell>
                 <TableCell>{order.name}</TableCell>
                 <TableCell>{order.email}</TableCell>
+                <TableCell>{order.status}</TableCell>
                 <TableCell> <MuiButton onClick={() => handleDelete(order._id)}>Remove Order</MuiButton> </TableCell>
               </TableRow>
             ))}

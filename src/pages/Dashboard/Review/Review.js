@@ -8,8 +8,8 @@ import useAuth from '../../../Hooks/useAuth';
 const Review = () => {
   const { user } = useAuth()
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const Swal = require('sweetalert2');
   const onSubmit = data => {
-    // console.log(data)
     fetch(`https://bike-buzz.herokuapp.com/addReview`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -19,6 +19,13 @@ const Review = () => {
       .then(result => {
         console.log(result)
         if (result.acknowledged === true) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Review added successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
           reset()
         }
       })

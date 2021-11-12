@@ -22,19 +22,18 @@ const ManageAllOrders = () => {
     <Box>
       <Typography sx={{ fontWeight: 'bold' }} variant="h4">Manage All Orders</Typography>
       <Typography sx={{ py: 3, fontWeight: 600 }} variant="body1">Orders Here {orders.length}</Typography>
-
       <TableContainer TableContainer component={Paper} >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>User Name</TableCell>
               <TableCell>User Email</TableCell>
-              <TableCell width="50px" align="left">Price</TableCell>
-              <TableCell width="50px" align="left">Product Name</TableCell>
-              <TableCell width="50px" align="left">Address</TableCell>
-              <TableCell width="50px" align="left">City</TableCell>
-              <TableCell width="50px" align="left">Status</TableCell>
-              <TableCell width="50px" align="left">Action</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Price</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Product Name</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Address</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">City</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Status</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Action</TableCell>
             </TableRow>
           </TableHead>
           {
