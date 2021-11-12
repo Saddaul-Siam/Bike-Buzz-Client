@@ -35,7 +35,7 @@ const Product = ({ pd }) => {
   };
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345 , boxShadow:1,mb:5}}>
         <CardHeader sx={{ height: '60px' }} title={name} />
         <Box className="images">
           <CardMedia
@@ -46,7 +46,7 @@ const Product = ({ pd }) => {
           />
         </Box>
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
+          <Typography paragraph color="text.secondary">
             {description.split(' ').slice(0, 40).toString().replace(/,/g, ' ')}
           </Typography>
         </CardContent>
@@ -64,7 +64,7 @@ const Product = ({ pd }) => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>
+            <Typography paragraph color="text.secondary" >
               {description.split(' ').slice(40, 10000).toString().replace(/,/g, ' ')}
             </Typography>
           </CardContent>

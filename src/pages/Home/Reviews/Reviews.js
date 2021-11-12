@@ -38,9 +38,9 @@ const Reviews = () => {
   const { reviewBackground } = useStyle();
   return (
     <Box className={reviewBackground}>
-      <Container sx={{ mt: 10,   pb:10 }}>
+      <Container sx={{ mt: 10, pb: 10 }}>
 
-        <Typography variant="h3" sx={{fontWeight: 700,fontSize:"34px",display:'flex', justifyContent: 'center',py: 10}}>Feedback from users about the website</Typography>
+        <Typography variant="h3" sx={{ fontWeight: 700, fontSize: "34px", display: 'flex', justifyContent: 'center', py: 10 }}>Feedback from users about the website</Typography>
         <Grid container spacing={1}>
           {
             reviews.map((review) => <Review key={review._id} review={review}></Review>)
@@ -49,7 +49,7 @@ const Reviews = () => {
         <Stack spacing={2}>
           <Box sx={{ pt: 5, display: 'flex', justifyContent: 'center' }}>
             {
-              <Pagination count={pageCount} color="secondary" variant="outlined" /* color="primary" */ onChange={handleChange} />
+              <Pagination count={pageCount} variant="outlined" color="primary" onChange={handleChange} />
             }
           </Box>
         </Stack>
