@@ -5,7 +5,7 @@ import TableRow from '@mui/material/TableRow';
 import MuiButton from '../../../../StyledComponent/MuiButton';
 import { useForm } from "react-hook-form";
 import { makeStyles } from '@mui/styles';
-import { Button } from '@mui/material';
+
 
 const ManageAllOrder = ({ order }) => {
   const { name, status, email, productName, address, city, price, _id, } = order;
@@ -94,7 +94,7 @@ const ManageAllOrder = ({ order }) => {
               <option value="done">Done</option>
             </select>
             {errors.exampleRequired && <span>This field is required</span>}
-            <Button onClick={() => setStatusId(_id)} sx={{ ml: 1 }} type="submit" variant="contained" size="small" color="success">Update</Button>
+            <MuiButton onClick={() => setStatusId(_id)} sx={{ ml: 1 }} type="submit" variant="contained" size="small" color="success">Update</MuiButton>
           </form>
         </TableCell>
         <TableCell width="50px"><MuiButton onClick={() => handleDelete(_id)}>Delete</MuiButton></TableCell>

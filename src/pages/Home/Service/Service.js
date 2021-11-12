@@ -9,11 +9,12 @@ import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Button, Grid } from '@mui/material';
+import {  Grid } from '@mui/material';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import './Service.css';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
+import MuiButton from '../../../StyledComponent/MuiButton';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -54,7 +55,8 @@ const Service = ({ data }) => {
         </CardContent>
         <CardActions disableSpacing>
           <Typography variant="h6"><AttachMoneyIcon />{price}</Typography>
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`/orders/${_id}`}><Button sx={{ ml: 5 }} variant="contained">Purchase</Button></Link>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`/orders/${_id}`}><MuiButton
+ sx={{ ml: 5 }} variant="contained">Purchase</MuiButton></Link>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

@@ -2,8 +2,9 @@ import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { useForm } from "react-hook-form";
 import { Box } from '@mui/system';
-import { Button, Container, TextField, Typography } from '@mui/material';
+import {  Container, TextField, Typography } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
+import MuiButton from '../../../StyledComponent/MuiButton';
 
 const AddReview = () => {
   const { user } = useAuth()
@@ -75,7 +76,7 @@ const AddReview = () => {
           </select>
           {errors.exampleRequired && <span>This field is required</span>}
           <br />
-          <Button variant="outlined" type="submit">Submit</Button>
+          <MuiButton type="submit">Submit</MuiButton>
         </form>
       </Box>
     </Container>

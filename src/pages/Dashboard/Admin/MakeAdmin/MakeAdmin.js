@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import {  Button, Container, TextField, Typography } from '@mui/material';
+import { Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import MuiButton from '../../../../StyledComponent/MuiButton';
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState('');
   const Swal = require('sweetalert2');
 
-  const handleOnBlur = e => {
+  const handleChange = e => {
     setEmail(e.target.value);
   };
 
@@ -54,9 +55,9 @@ const MakeAdmin = () => {
             sx={{ width: '50%' }}
             label="Email"
             type="email"
-            onchange={handleOnBlur}
+            onChange={handleChange}
             variant="standard" />
-          <Button type="submit" variant="contained">Make Admin</Button>
+          <MuiButton type="submit" variant="contained">Make Admin</MuiButton>
         </form>
       </Box>
     </Container>

@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from '@mui/material';
+import {Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system';
+import MuiButton from '../../../StyledComponent/MuiButton';
 
 const Order = () => {
   const { ordersId } = useParams();
@@ -102,7 +103,7 @@ const Order = () => {
             <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>City</Typography>
             <input className={input} placeholder="Your City"   {...register("city")} type="text" required />
             {errors.exampleRequired && <span>This field is required</span>}
-            <Button className={input} variant="contained" type="submit">Order Now</Button>
+            <MuiButton className={input} type="submit">Order Now</MuiButton>
           </form>
         </Grid>
       </Grid>

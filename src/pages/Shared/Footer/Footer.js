@@ -9,7 +9,7 @@ const Footer = () => {
     const theme = useTheme();
     const useStyle = makeStyles({
         socialIcon: {
-            color: '#fff',
+            color: '#fff !important',
             margin: '20px 10px 30px 0 !important',
         },
         bg: {

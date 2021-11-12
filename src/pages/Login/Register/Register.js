@@ -5,6 +5,8 @@ import { Grid } from '@mui/material';
 import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import Navigation from '../../Shared/Navigation/Navigation';
+import MuiButton from '../../../StyledComponent/MuiButton';
+import Footer from '../../Shared/Footer/Footer';
 
 const Register = () => {
   const [loginData, setLoginData] = useState({});
@@ -31,11 +33,11 @@ const Register = () => {
   return (
     <>
       <Navigation></Navigation>
-      <Container sx={{mt:10}}>
+      <Container sx={{ mt: 10 }}>
         <Grid container spacing={2}>
           <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-            <Typography variant="body1" gutterBottom>Register</Typography>
-            {/* !isLoading && */ <form onSubmit={handleLoginSubmit}>
+            <Typography variant="h4" gutterBottom>Register</Typography>
+            {<form onSubmit={handleLoginSubmit}>
               <TextField
                 sx={{ width: '75%', m: 1 }}
                 id="standard-basic"
@@ -68,7 +70,7 @@ const Register = () => {
                 name="password2"
                 onBlur={handleOnBlur}
                 variant="standard" />
-              <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Register</Button>
+              <MuiButton sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Register</MuiButton>
               <NavLink
                 style={{ textDecoration: 'none' }}
                 to="/login">
@@ -80,10 +82,11 @@ const Register = () => {
             {authError && <Alert severity="error">{authError}</Alert>}
           </Grid>
           <Grid item xs={12} md={6}>
-            {/* <img style={{ width: '100%' }} src={login} alt="" /> */}
+            <img style={{ width: '100%' }} src="https://i.ibb.co/BGmC4DL/sign-concept-illustration-114360-5267.jpg" alt="" />
           </Grid>
         </Grid>
       </Container>
+      <Footer></Footer>
     </>
   );
 };

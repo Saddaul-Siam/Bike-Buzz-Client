@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { useForm } from "react-hook-form";
 import { Box } from '@mui/system';
-import { Button, Container, TextField, Typography } from '@mui/material';
+import { Container, TextField, Typography } from '@mui/material';
+import MuiButton from '../../../../StyledComponent/MuiButton';
 const AddAProducts = () => {
   const Swal = require('sweetalert2');
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -55,7 +56,7 @@ const AddAProducts = () => {
           <textarea className={textArea} rows={5} placeholder="Description" {...register("description")} /> <br required />
 
           {errors.exampleRequired && <span>This field is required</span>}
-          <Button variant="outlined" type="submit">Submit</Button>
+          <MuiButton variant="outlined" type="submit">Submit</MuiButton>
         </form>
       </Box>
     </Container>
