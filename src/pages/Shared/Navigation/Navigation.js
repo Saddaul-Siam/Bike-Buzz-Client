@@ -14,6 +14,7 @@ import useAuth from '../../../Hooks/useAuth';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@mui/styles';
 
 
 function HideOnScroll(props) {
@@ -34,7 +35,15 @@ HideOnScroll.propTypes = {
   window: PropTypes.func,
 };
 
-export default function Navigation(props) {
+const Navigation = (props) => {
+  const useStyle = makeStyles({
+    navbarColor: {
+      backgroundColor: '#6047EC !important',
+      padding: "5px 0"
+    }
+
+  });
+  const { navbarColor } = useStyle();
   const { user, logOut } = useAuth()
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -134,9 +143,9 @@ export default function Navigation(props) {
 
     <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll {...props}>
-        <AppBar>
+        <AppBar className={navbarColor}>
           <Container>
-            <Toolbar sx={{p:"0 !important"}}>
+            <Toolbar sx={{ p: "0 !important" }}>
               <Typography
                 variant="h6"
                 noWrap
@@ -187,4 +196,4 @@ export default function Navigation(props) {
 
   );
 }
-
+export default Navigation;

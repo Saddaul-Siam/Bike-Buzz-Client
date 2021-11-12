@@ -13,7 +13,7 @@ const Footer = () => {
             margin: '20px 10px 30px 0 !important',
         },
         bg: {
-            backgroundColor: '#622BEE !important',
+            backgroundColor: '#6047EC !important',
             marginTop: '100px'
         },
         display: {
