@@ -22,6 +22,7 @@ import ManageAllOrders from '../Admin/ManageAllOrders/ManageAllOrders';
 import AddAProducts from '../Admin/AddAProducts/AddAProducts';
 import ManageProducts from '../Admin/ManageProducts/ManageProducts';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import Pay from '../Pay/Pay';
 const drawerWidth = 300;
 
 function Dashboard(props) {
@@ -42,7 +43,7 @@ function Dashboard(props) {
         <List>
           <Typography variant="body1" sx={{ fontWeight: 600 }}>Welcome {user.displayName}</Typography>
           <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}`}><Button color="inherit" sx={{ px: 0 }}>Pay</Button></Link>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/pay`}><Button color="inherit" sx={{ px: 0 }}>Pay</Button></Link>
           <br />
           <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></Link>
           <br />
@@ -96,7 +97,7 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography sx={{ml:2}} variant="h6" noWrap component="div">
+          <Typography sx={{ ml: 2 }} variant="h6" noWrap component="div">
             Dashboard
           </Typography>
         </Toolbar>
@@ -140,6 +141,9 @@ function Dashboard(props) {
         <Switch>
           <Route exact path={path}>
             <DashboardHome />
+          </Route>
+          <Route path={`${path}/pay`}>
+            <Pay />
           </Route>
           <Route path={`${path}/myOrders`}>
             <MyOrders />
