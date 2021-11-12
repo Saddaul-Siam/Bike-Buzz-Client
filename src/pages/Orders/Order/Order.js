@@ -5,7 +5,40 @@ import { useForm } from "react-hook-form";
 import useAuth from '../../../Hooks/useAuth';
 import { makeStyles } from '@mui/styles';
 import Navigation from '../../Shared/Navigation/Navigation';
+
+
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { Box } from '@mui/system';
+import { Link } from 'react-router-dom';
+
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
+
 const Order = () => {
+
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   const { ordersId } = useParams();
   const [order, setOrder] = useState({});
   const Swal = require('sweetalert2');
@@ -57,12 +90,25 @@ const Order = () => {
 
   const { input } = useStyle()
   return (
-    <Container sx={{ mt: 10 }}>
+    <Container sx={{ mt: 15 }}>
       <Navigation></Navigation>
-      <Typography variant="h4" sx={{ marginTop: 3, fontWeight: 600 }}>Orders pages </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={5}>
         <Grid item xs={12} sm={12} md={6} lg={6}>
-          {order.name}
+          <Card >
+            <CardHeader  title={order.name} />
+            <Box className="ordersImages">
+              <CardMedia
+                component="img"
+                image={order.img}
+                alt="bike"
+              />
+            </Box>
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+                {order?.description}
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={6}>
 
