@@ -10,10 +10,9 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
-  console.log(page);
   const size = 4;
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?page=${page}&&size=${size}`)
+    fetch(`https://bike-buzz.herokuapp.com/reviews?page=${page}&&size=${size}`)
       .then(res => res.json())
       .then(data => {
         setReviews(data.reviews);
@@ -24,9 +23,7 @@ const Reviews = () => {
   }, [page]);
 
   const handleChange = (event, value) => {
-    console.log(value);
     setPage(value - 1);
-    // {..value + 1 }}
   };
   return (
     <Container sx={{ mt: 10 }}>

@@ -29,3 +29,6 @@
 .ordersImages:hover img {
   transform: scale(1.3);
 }
+.iconColor{
+  color: #ffc107
+}
