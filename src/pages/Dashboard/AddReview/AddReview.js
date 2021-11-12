@@ -5,7 +5,7 @@ import { Box } from '@mui/system';
 import { Button, Container, TextField, Typography } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
 
-const Review = () => {
+const AddReview = () => {
   const { user } = useAuth()
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const Swal = require('sweetalert2');
@@ -82,4 +82,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default AddReview;

@@ -16,7 +16,7 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import DashboardHome from '../DashboardHome/DashboardHome';
 import useAuth from '../../../Hooks/useAuth';
 import MyOrders from '../MyOrders/MyOrders';
-import Review from '../Review/Review';
+import AddReview from '../AddReview/AddReview';
 import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
 import ManageAllOrders from '../Admin/ManageAllOrders/ManageAllOrders';
 import AddAProducts from '../Admin/AddAProducts/AddAProducts';
@@ -145,7 +145,7 @@ function Dashboard(props) {
             <MyOrders />
           </Route>
           <Route path={`${path}/review`}>
-            <Review />
+            <AddReview />
           </Route>
           <AdminRoute path={`${path}/manageAllOrders`}>
             <ManageAllOrders />
