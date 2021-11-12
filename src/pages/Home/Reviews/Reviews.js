@@ -1,9 +1,10 @@
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Review from '../Review/Review';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { Box } from '@mui/system';
+import { makeStyles } from '@mui/styles';
 
 
 const Reviews = () => {
@@ -25,21 +26,35 @@ const Reviews = () => {
   const handleChange = (event, value) => {
     setPage(value - 1);
   };
+
+  const useStyle = makeStyles({
+    reviewBackground: {
+      backgroundImage: `linear-gradient(#F5F7FF,#F5F7FF)`,
+      backgroundBlendMode: 'overlay',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'
+    }
+  });
+  const { reviewBackground } = useStyle();
   return (
-    <Container sx={{ mt: 10 }}>
-      <Grid container spacing={2}>
-        {
-          reviews.map((review) => <Review key={review._id} review={review}></Review>)
-        }
-      </Grid>
-      <Stack spacing={2}>
-        <Box sx={{ pt: 5, display: 'flex', justifyContent: 'center' }}>
+    <Box className={reviewBackground}>
+      <Container sx={{ mt: 10,   pb:10 }}>
+
+        <Typography variant="h3" sx={{fontWeight: 700,fontSize:"34px",display:'flex', justifyContent: 'center',py: 10}}>Feedback from users about the website</Typography>
+        <Grid container spacing={1}>
           {
-            <Pagination count={pageCount} color="secondary" variant="outlined" /* color="primary" */ onChange={handleChange} />
+            reviews.map((review) => <Review key={review._id} review={review}></Review>)
           }
-        </Box>
-      </Stack>
-    </Container >
+        </Grid>
+        <Stack spacing={2}>
+          <Box sx={{ pt: 5, display: 'flex', justifyContent: 'center' }}>
+            {
+              <Pagination count={pageCount} color="secondary" variant="outlined" /* color="primary" */ onChange={handleChange} />
+            }
+          </Box>
+        </Stack>
+      </Container >
+    </Box>
   );
 };
 

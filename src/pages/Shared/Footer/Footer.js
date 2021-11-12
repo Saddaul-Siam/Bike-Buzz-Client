@@ -1,73 +1,78 @@
-import { Container, Grid, IconButton, List, ListItemText, Typography } from '@mui/material';
+import { Container, Grid, IconButton, List, ListItemText, Typography, useTheme } from '@mui/material';
 import React from 'react';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import GoogleIcon from '@mui/icons-material/Google';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import { makeStyles } from '@mui/styles';
-import MuiButton from '../../../StyledComponent/MuiButton';
-// import bg from '../../../images/footer-bg.png'
-const useStyle = makeStyles({
-    socialIcon: {
-        color: '#19D3AE !important',
-        border: '1px solid #19D3AE !important',
-        margin: '20px 10px 30px 0 !important',
-        '&:hover': {
-            background: '#19D3AE !important',
-            color: '#fff !important'
-        }
-    },
-    bg: {
-        // background: `url(${bg})`,
-        marginTop: '100px'
-    }
-})
+
 const Footer = () => {
-    const { socialIcon, bg } = useStyle();
+    const theme = useTheme();
+    const useStyle = makeStyles({
+        socialIcon: {
+            color: '#fff',
+            margin: '20px 10px 30px 0 !important',
+        },
+        bg: {
+            backgroundColor: '#622BEE !important',
+            marginTop: '100px'
+        },
+        display: {
+            [theme.breakpoints.down('md')]: {
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+            },
+        }
+    });
+    const { socialIcon, bg, display } = useStyle();
     return (
         <footer className={bg}>
-            <Container>
-                <Grid container spacing={3} sx={{ my: 3 }}>
+            <Container >
+                <Grid className={display} container spacing={3} sx={{ my: 3 }}>
                     <Grid item xs={12} sm={12} md={6} lg={3}>
-                        <List sx={{ mt: 4 }}>
-                            <ListItemText>Emergency Dental Care</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
-                            <ListItemText>Treatment of Personal Diseases</ListItemText>
-                            <ListItemText>Tooth Extraction</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
+                        <List sx={{ mt: 4, color: '#fff' }}>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
                         </List>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={3}>
-                        <List>
-                            <ListItemText sx={{ color: '#19D3AE', mb: 1 }}>Services</ListItemText>
-                            <ListItemText >Emergency Dental Care</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
-                            <ListItemText>Treatment of Personal Diseases</ListItemText>
-                            <ListItemText>Tooth Extraction</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
+                        <List sx={{ mt: 4, color: '#fff' }}>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
                         </List>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={3}>
-                        <List>
-                            <ListItemText sx={{ color: '#19D3AE', mb: 1 }}>Oral Health</ListItemText>
-                            <ListItemText>Emergency Dental Care</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
-                            <ListItemText>Treatment of Personal Diseases</ListItemText>
-                            <ListItemText>Tooth Extraction</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
-                            <ListItemText>Check Up</ListItemText>
+                        <List sx={{ mt: 4, color: '#fff' }}>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
+                            <ListItemText>Services</ListItemText>
                         </List>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={3}>
-                        <List>
-                            <ListItemText sx={{ color: '#19D3AE', mb: 1 }}>Our Address</ListItemText>
-                            <ListItemText>New York - 101010 Hudson</ListItemText>
-                            <ListItemText>Yards</ListItemText>
+                        <List sx={{ mt: 4, color: '#fff' }}>
+                            <ListItemText>Our Address</ListItemText>
+                            <ListItemText>Pabna Dhaka Bangladesh</ListItemText>
                         </List>
                         <IconButton className={socialIcon}>
-                            <GoogleIcon />
+                            <FacebookIcon />
                         </IconButton>
                         <IconButton className={socialIcon}>
                             <TwitterIcon />
@@ -75,13 +80,13 @@ const Footer = () => {
                         <IconButton className={socialIcon}>
                             <InstagramIcon />
                         </IconButton>
-                        <Typography>Call Now</Typography>
-                        <MuiButton variant="contained">+8065432145</MuiButton>
+                        <Typography sx={{ color: '#fff' }}>Call Now</Typography>
+                        <Typography sx={{ color: '#fff' }}>+8801311333277</Typography>
                     </Grid>
                 </Grid>
-                <Typography sx={{ textAlign: 'center', py: 4 }} variant="subtitle2">Copyright &copy; {new Date().getFullYear()} All Rights Reserved</Typography>
+                <Typography sx={{ textAlign: 'center', py: 4, color: '#fff' }} variant="subtitle2">Copyright &copy; {new Date().getFullYear()} All Rights Reserved</Typography>
             </Container>
-        </footer>
+        </footer >
     );
 };
 
