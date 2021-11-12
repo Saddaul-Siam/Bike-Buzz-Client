@@ -87,9 +87,11 @@ const ManageAllOrder = ({ order }) => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <select className={option} {...register("status")}>
               <option value={status}>{status}</option>
-              <option value="pending">pending</option>
-              <option value="approved">approved</option>
-              <option value="done">done</option>
+              <option value="pending">Pending</option>
+              <option value="rejected">Rejected</option>
+              <option value="approved">Approved</option>
+              <option value="shipped">Shipped</option>
+              <option value="done">Done</option>
             </select>
             {errors.exampleRequired && <span>This field is required</span>}
             <Button onClick={() => setStatusId(_id)} sx={{ ml: 1 }} type="submit" variant="contained" size="small" color="success">Update</Button>
