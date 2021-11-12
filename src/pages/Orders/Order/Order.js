@@ -5,40 +5,13 @@ import { useForm } from "react-hook-form";
 import useAuth from '../../../Hooks/useAuth';
 import { makeStyles } from '@mui/styles';
 import Navigation from '../../Shared/Navigation/Navigation';
-
-
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box } from '@mui/system';
-import { Link } from 'react-router-dom';
-
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
-
 
 const Order = () => {
-
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
   const { ordersId } = useParams();
   const [order, setOrder] = useState({});
   const Swal = require('sweetalert2');
@@ -55,7 +28,6 @@ const Order = () => {
     data.productName = order.name
     data.price = order.price
     data.status = "pending"
-    console.log(data);
     fetch(`https://bike-buzz.herokuapp.com/order`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -73,7 +45,6 @@ const Order = () => {
           })
           reset()
         }
-        console.log(data);
       })
   };
 
