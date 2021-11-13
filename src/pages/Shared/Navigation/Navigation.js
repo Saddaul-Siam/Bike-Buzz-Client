@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Button, Container } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
@@ -151,7 +151,7 @@ const Navigation = (props) => {
                 noWrap
                 component="div"
               >
-                BIKE BUZZ
+                <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/">BIKE BUZZ</NavLink>
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
