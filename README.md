@@ -1,6 +1,6 @@
 * Getting Started with Create Bike buzz website
 
-* This project live link [Create React App](https://bike-buzz.web.app/)
+* This project live link [Bike Buzz](https://bike-buzz.web.app/)
 
 ## This website create by 
 
