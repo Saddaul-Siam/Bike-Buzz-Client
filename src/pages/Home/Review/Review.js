@@ -37,7 +37,7 @@ const Review = ({ review }) => {
         }
         }
       >
-        <Paper elevation={0} sx={{ px:2,py:5 }}>
+        <Paper elevation={0} sx={{ minHeight: '300px', px: 2, py: 5  }}>
           <Typography variant="h6" sx={{ display: 'flex', justifyContent: 'center', fontWeight: 500 }}>
             {review.name}
           </Typography>
