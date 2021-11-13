@@ -2,7 +2,7 @@ import React from 'react';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import MuiButton from '../../../../StyledComponent/MuiButton';
+import { DeleteButton } from '../../../../StyledComponent/MuiButton';
 
 const ManageProduct = ({ product }) => {
   const { name, price, _id } = product;
@@ -43,7 +43,7 @@ const ManageProduct = ({ product }) => {
         <TableCell width="50px">{name}</TableCell>
         <TableCell width="50px">{price}</TableCell>
         <TableCell width="50px">{_id}</TableCell>
-        <TableCell width="50px"><MuiButton onClick={() => handleClick(_id)}>Delete</MuiButton></TableCell>
+        <TableCell width="50px"><DeleteButton onClick={() => handleClick(_id)}>Delete</DeleteButton></TableCell>
       </TableRow>
     </TableBody>
   );

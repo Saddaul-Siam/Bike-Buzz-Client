@@ -12,8 +12,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
-import MuiButton from '../../../StyledComponent/MuiButton';
 import { Grid } from '@mui/material';
+import PrimaryButton from '../../../StyledComponent/MuiButton';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -35,7 +35,7 @@ const Product = ({ pd }) => {
   };
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
-      <Card sx={{ maxWidth: 345 , boxShadow:1,mb:5}}>
+      <Card sx={{ maxWidth: 345, boxShadow: 1, mb: 5 }}>
         <CardHeader sx={{ height: '60px' }} title={name} />
         <Box className="images">
           <CardMedia
@@ -52,7 +52,7 @@ const Product = ({ pd }) => {
         </CardContent>
         <CardActions disableSpacing>
           <Typography variant="h6"><AttachMoneyIcon />{price}</Typography>
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`/orders/${_id}`}><MuiButton sx={{ ml: 5 }} variant="contained">Purchase</MuiButton></Link>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`/orders/${_id}`}><PrimaryButton sx={{ ml: 5 }} variant="contained">Purchase</PrimaryButton></Link>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

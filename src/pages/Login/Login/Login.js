@@ -5,9 +5,9 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import Navigation from '../../Shared/Navigation/Navigation';
 import useAuth from '../../../Hooks/useAuth';
-import MuiButton from '../../../StyledComponent/MuiButton';
 import Divider from '@mui/material/Divider';
 import Footer from '../../Shared/Footer/Footer';
+import PrimaryButton from '../../../StyledComponent/MuiButton';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
@@ -56,7 +56,7 @@ const Login = () => {
                 onChange={handleOnChange}
                 variant="standard" />
 
-              <MuiButton sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Login</MuiButton>
+              <PrimaryButton sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Login</PrimaryButton>
               <NavLink
                 style={{ textDecoration: 'none' }}
                 to="/register">
@@ -64,14 +64,14 @@ const Login = () => {
               </NavLink>
               {isLoading && <CircularProgress />}
               {user.email && <Alert severity="success"> User login successful</Alert>}
-              {authError && <Alert severity="error">{authError}</Alert>}
+              {authError && <Alert sx={{ width: '75%' }} severity="error">{authError}</Alert>}
             </form>
             <Divider sx={{ width: '75%', mt: 2 }} />
             <Divider sx={{ width: '75%' }} />
-            <MuiButton sx={{ mt: 5, width: '75%' }} onClick={handleGoogleSignIn} variant="contained"><GoogleIcon /> <Typography sx={{ pl: 3 }}>Google sign In</Typography> </MuiButton>
+            <PrimaryButton sx={{ mt: 5, width: '75%' }} onClick={handleGoogleSignIn} variant="contained"><GoogleIcon /> <Typography sx={{ pl: 3 }}>Google sign In</Typography> </PrimaryButton>
           </Grid>
           <Grid item xs={12} md={6}>
-            <img style={{ width: '100%' }} src="https://i.ibb.co/ctvRFVc/mobile-login-concept-illustration-114360-83.jpg" alt="" />
+            <img style={{ width: '100%' }} src="https://i.ibb.co/BGmC4DL/sign-concept-illustration-114360-5267.jpg" alt="" />
           </Grid>
         </Grid>
       </Container>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import MuiButton from '../../../../StyledComponent/MuiButton';
+import PrimaryButton from '../../../../StyledComponent/MuiButton';
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState('');
@@ -39,6 +39,13 @@ const MakeAdmin = () => {
                 'success'
               )
             }
+            else if (!data.modifiedCount) {
+              Swal.fire(
+                'Error!!!',
+                'This user not found',
+                'error'
+              )
+            }
           })
       }
     })
@@ -57,7 +64,7 @@ const MakeAdmin = () => {
             type="email"
             onChange={handleChange}
             variant="standard" />
-          <MuiButton type="submit" variant="contained">Make Admin</MuiButton>
+          <PrimaryButton type="submit" variant="contained">Make Admin</PrimaryButton>
         </form>
       </Box>
     </Container>

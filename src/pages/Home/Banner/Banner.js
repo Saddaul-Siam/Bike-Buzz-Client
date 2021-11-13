@@ -3,8 +3,8 @@ import Grid from '@mui/material/Grid';
 import { Typography, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import { makeStyles } from '@mui/styles';
-import MuiButton from '../../../StyledComponent/MuiButton';
 import bg from '../../../images/banner-bg.png'
+import PrimaryButton from '../../../StyledComponent/MuiButton';
 
 const Banner = () => {
   const theme = useTheme()
@@ -60,7 +60,7 @@ const Banner = () => {
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam aliquam amet possimus, <br />
               nemo quis eaque  quae quaerat earum aspernatur cumque!
             </Typography>
-            <Box className={bannerButton}><MuiButton>VIEW MORE</MuiButton></Box>
+            <Box className={bannerButton}><PrimaryButton>VIEW MORE</PrimaryButton></Box>
           </Box>
         </Grid>
       </Grid>

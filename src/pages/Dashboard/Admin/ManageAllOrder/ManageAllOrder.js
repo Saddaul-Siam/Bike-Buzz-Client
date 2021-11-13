@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import MuiButton from '../../../../StyledComponent/MuiButton';
 import { useForm } from "react-hook-form";
 import { makeStyles } from '@mui/styles';
+import { DeleteButton, SuccessButton } from '../../../../StyledComponent/MuiButton';
 
 
 const ManageAllOrder = ({ order }) => {
@@ -94,10 +94,10 @@ const ManageAllOrder = ({ order }) => {
               <option value="done">Done</option>
             </select>
             {errors.exampleRequired && <span>This field is required</span>}
-            <MuiButton onClick={() => setStatusId(_id)} sx={{ ml: 1 }} type="submit" variant="contained" size="small" color="success">Update</MuiButton>
+            <SuccessButton onClick={() => setStatusId(_id)} sx={{ ml: 1, mt: 1 }} type="submit" variant="contained" size="small" color="success">Update</SuccessButton>
           </form>
         </TableCell>
-        <TableCell width="50px"><MuiButton onClick={() => handleDelete(_id)}>Delete</MuiButton></TableCell>
+        <TableCell width="50px"><DeleteButton onClick={() => handleDelete(_id)}>Delete</DeleteButton></TableCell>
       </TableRow>
     </TableBody>
   );

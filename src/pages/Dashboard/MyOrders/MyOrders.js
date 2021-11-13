@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useAuth from '../../../Hooks/useAuth';
-import MuiButton from '../../../StyledComponent/MuiButton';
+import { DeleteButton } from '../../../StyledComponent/MuiButton';
 
 
 const MyOrders = () => {
@@ -76,7 +76,7 @@ const MyOrders = () => {
                 <TableCell>{order.name}</TableCell>
                 <TableCell>{order.email}</TableCell>
                 <TableCell>{order.status}</TableCell>
-                <TableCell> <MuiButton onClick={() => handleDelete(order._id)}>Remove Order</MuiButton> </TableCell>
+                <TableCell> <DeleteButton onClick={() => handleDelete(order._id)}>Remove Order</DeleteButton> </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -1,4 +1,4 @@
-import {Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
@@ -10,7 +10,7 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system';
-import MuiButton from '../../../StyledComponent/MuiButton';
+import PrimaryButton from '../../../StyledComponent/MuiButton';
 
 const Order = () => {
   const { ordersId } = useParams();
@@ -67,7 +67,7 @@ const Order = () => {
       <Grid container spacing={5}>
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <Card >
-            <CardHeader  title={order.name} />
+            <CardHeader title={order.name} />
             <Box className="ordersImages">
               <CardMedia
                 component="img"
@@ -103,7 +103,7 @@ const Order = () => {
             <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>City</Typography>
             <input className={input} placeholder="Your City"   {...register("city")} type="text" required />
             {errors.exampleRequired && <span>This field is required</span>}
-            <MuiButton className={input} type="submit">Order Now</MuiButton>
+            <PrimaryButton className={input} type="submit">Order Now</PrimaryButton>
           </form>
         </Grid>
       </Grid>
