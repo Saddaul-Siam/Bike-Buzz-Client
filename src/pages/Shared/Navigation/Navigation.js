@@ -15,7 +15,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
-import PrimaryButton, { DeleteButton } from '../../../StyledComponent/MuiButton';
+import PrimaryButton from '../../../StyledComponent/MuiButton';
 
 
 function HideOnScroll(props) {
