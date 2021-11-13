@@ -24,6 +24,20 @@ import ManageProducts from '../Admin/ManageProducts/ManageProducts';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import Pay from '../Pay/Pay';
 import { makeStyles } from '@mui/styles';
+import PaymentIcon from '@mui/icons-material/Payment';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import LogoutIcon from '@mui/icons-material/Logout';
+import HomeIcon from '@mui/icons-material/Home';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
+
+
+
+
 const drawerWidth = 350;
 
 function Dashboard(props) {
@@ -41,9 +55,9 @@ function Dashboard(props) {
       textDecoration: 'none',
       color: 'black',
       display: 'block',
-      paddingBottom:5,
-      marginBottom:10,
-      fontSize:'24px !important'
+      paddingBottom: 5,
+      marginBottom: 10,
+      fontSize: '24px !important'
     }
   })
   const { menuStyle } = useStyle()
@@ -54,16 +68,16 @@ function Dashboard(props) {
       {admin ? "" : <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
         <List>
           <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "24px" }}>Welcome <span style={{ color: '#6047EC' }}>{user.displayName}</span></Typography>
+          <Link className={menuStyle} to="/"><Button sx={{ fontWeight: 700, mt: 5 }} color="inherit"><HomeIcon sx={{ mr: 2 }} />Home</Button></Link>
+          <Link className={menuStyle} to={`${url}/pay`}><Button sx={{ fontWeight: 700 }} color="inherit"><PaymentIcon sx={{ mr: 2 }} /> Pay</Button></Link>
 
-          <Link className={menuStyle} to={`${url}/pay`}><Button sx={{ fontWeight: 700,mt:3 }} color="inherit">Pay</Button></Link>
+          <Link className={menuStyle} to={`${url}/myOrders`}><Button sx={{ fontWeight: 700 }} color="inherit"><BookmarkBorderIcon sx={{ mr: 2 }} /> My Orders</Button></Link>
 
-          <Link className={menuStyle} to={`${url}/myOrders`}><Button sx={{ fontWeight: 700 }} color="inherit">My Orders</Button></Link>
+          <Link className={menuStyle} to={`${url}/review`}><Button sx={{ fontWeight: 700 }} color="inherit"><RateReviewIcon sx={{ mr: 2 }} /> Review</Button></Link>
 
-          <Link className={menuStyle} to={`${url}/review`}><Button sx={{ fontWeight: 700 }} color="inherit">Review</Button></Link>
+          <Link className={menuStyle} to="/explore"><Button sx={{ fontWeight: 700 }} color="inherit"><AddShoppingCartIcon sx={{ mr: 2 }} /> Continue to shopping</Button></Link>
 
-          <Link className={menuStyle} to="/explore"><Button sx={{ fontWeight: 700 }} color="inherit">Continue to shopping</Button></Link>
-
-          <Button color="inherit" sx={{ fontWeight: 700 }} onClick={logOut}>Log Out</Button>
+          <Button color="inherit" sx={{ fontWeight: 700 }} onClick={logOut}><LogoutIcon sx={{ mr: 2 }} /> Log Out</Button>
         </List>
       </Box >}
 
@@ -72,15 +86,17 @@ function Dashboard(props) {
           <List>
             <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "24px" }}>Welcome <span style={{ color: '#6047EC' }}>{user.displayName}</span></Typography>
 
-            <Link className={menuStyle} to={`${url}/manageAllOrders`}><Button sx={{ fontWeight: 700,mt:3}} color="inherit">Manage All Orders</Button></Link>
+            <Link className={menuStyle} to="/"><Button sx={{ fontWeight: 700, mt: 5 }} color="inherit"><HomeIcon sx={{ mr: 2 }} />Home</Button></Link>
 
-            <Link className={menuStyle} to={`${url}/addAProduct`}><Button sx={{ fontWeight: 700 }} color="inherit">Add A Product</Button></Link>
+            <Link className={menuStyle} to={`${url}/manageAllOrders`}><Button sx={{ fontWeight: 700 }} color="inherit"><ManageAccountsIcon sx={{ mr: 2 }} /> Manage All Orders</Button></Link>
 
-            <Link className={menuStyle} to={`${url}/makeAdmin`}><Button sx={{ fontWeight: 700 }} color="inherit">Make Admin</Button></Link>
+            <Link className={menuStyle} to={`${url}/addAProduct`}><Button sx={{ fontWeight: 700 }} color="inherit"><AddTaskIcon sx={{ mr: 2 }} /> Add A Product</Button></Link>
 
-            <Link className={menuStyle} to={`${url}/manageProducts`}><Button sx={{ fontWeight: 700 }} color="inherit">Manage Products</Button></Link>
+            <Link className={menuStyle} to={`${url}/makeAdmin`}><Button sx={{ fontWeight: 700 }} color="inherit"><AddCircleOutlineIcon sx={{ mr: 2 }} /> Make Admin</Button></Link>
 
-            <Button sx={{ fontWeight: 700 }} color="inherit" onClick={logOut}>Log Out</Button>
+            <Link className={menuStyle} to={`${url}/manageProducts`}><Button sx={{ fontWeight: 700 }} color="inherit"><ManageAccountsIcon sx={{ mr: 2 }} /> Manage Products</Button></Link>
+
+            <Button sx={{ fontWeight: 700 }} color="inherit" onClick={logOut}><LogoutIcon sx={{ mr: 2 }} />Log Out</Button>
           </List>
         </Box >
       }
