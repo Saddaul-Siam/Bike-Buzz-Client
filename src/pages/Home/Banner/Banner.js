@@ -29,8 +29,6 @@ const Banner = () => {
     bannerText: {
       [theme.breakpoints.down('sm')]: {
         fontSize: 18,
-        // fontWeight: 'bold',
-        // textAlign: 'center',
         padding: '40px 20px 20px 20px'
       },
     }
@@ -57,8 +55,7 @@ const Banner = () => {
               EVERYTHING <br /> MOTORSPORTS
             </Typography>
             <Typography className={bannerText} variant="body1" sx={{ fontSize: 18, color: 'gray', py: 3 }}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam aliquam amet possimus, <br />
-              nemo quis eaque  quae quaerat earum aspernatur cumque!
+              This bike was manufactured during 1998 – 2000 what makes the Mille <br />(1000 in Italian) special is that it is still very much in use.
             </Typography>
             <Box className={bannerButton}><PrimaryButton>VIEW MORE</PrimaryButton></Box>
           </Box>

@@ -38,7 +38,7 @@ const Service = ({ data }) => {
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345 , mb: 5 }}>
         <CardHeader sx={{ height: '60px' }} title={name} />
         <Box className="images">
           <CardMedia
@@ -49,7 +49,7 @@ const Service = ({ data }) => {
           />
         </Box>
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
+          <Typography paragraph color="text.secondary">
             {description.split(' ').slice(0, 50).toString().replace(/,/g, ' ')}
           </Typography>
         </CardContent>

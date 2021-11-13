@@ -50,7 +50,7 @@ const Review = ({ review }) => {
             />
           </Typography>
           <Typography variant="body" color="text.secondary" >
-            {review.review.split(' ').slice(0, 30).toString().replace(/,/g, ' ')}
+            {review.review.split(' ').slice(0, 25).toString().replace(/,/g, ' ')}
           </Typography>
           <ExpandMore
             expand={expanded}
@@ -62,7 +62,7 @@ const Review = ({ review }) => {
           </ExpandMore>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <Typography paragraph>
-              {review.review.split(' ').slice(30, 10000).toString().replace(/,/g, ' ')}
+              {review.review.split(' ').slice(25, 10000).toString().replace(/,/g, ' ')}
             </Typography>
           </Collapse>
 
