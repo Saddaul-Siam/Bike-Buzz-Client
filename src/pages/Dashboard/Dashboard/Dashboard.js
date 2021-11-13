@@ -56,8 +56,7 @@ function Dashboard(props) {
       color: 'black',
       display: 'block',
       paddingBottom: 5,
-      marginBottom: 10,
-      fontSize: '24px !important'
+      margin: 10,
     }
   })
   const { menuStyle } = useStyle()
@@ -77,7 +76,7 @@ function Dashboard(props) {
 
           <Link className={menuStyle} to="/explore"><Button sx={{ fontWeight: 700 }} color="inherit"><AddShoppingCartIcon sx={{ mr: 2 }} /> Continue to shopping</Button></Link>
 
-          <Button color="inherit" sx={{ fontWeight: 700 }} onClick={logOut}><LogoutIcon sx={{ mr: 2 }} /> Log Out</Button>
+          <Button className={menuStyle} color="inherit" sx={{ fontWeight: 700 }} onClick={logOut}><LogoutIcon sx={{ mr: 2 }} /> Log Out</Button>
         </List>
       </Box >}
 
@@ -96,7 +95,7 @@ function Dashboard(props) {
 
             <Link className={menuStyle} to={`${url}/manageProducts`}><Button sx={{ fontWeight: 700 }} color="inherit"><ManageAccountsIcon sx={{ mr: 2 }} /> Manage Products</Button></Link>
 
-            <Button sx={{ fontWeight: 700 }} color="inherit" onClick={logOut}><LogoutIcon sx={{ mr: 2 }} />Log Out</Button>
+            <Button className={menuStyle} sx={{ fontWeight: 700 }} color="inherit" onClick={logOut}><LogoutIcon sx={{ mr: 1 }}/>Log Out</Button>
           </List>
         </Box >
       }

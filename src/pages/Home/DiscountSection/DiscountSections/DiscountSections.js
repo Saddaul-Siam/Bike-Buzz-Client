@@ -29,7 +29,7 @@ const DiscountSections = () => {
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6} >
-            <Typography variant="h2" sx={{ mt: 25 }}>
+            <Typography variant="h2" sx={{ mt: 28 }}>
               <img style={{ width: '100%' }} src="https://i.ibb.co/VjKRgpD/aprilia-rsv-1000.png" alt="" />
             </Typography>
           </Grid>
