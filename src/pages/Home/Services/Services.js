@@ -3,12 +3,16 @@ import React, { useEffect, useState } from 'react';
 import Service from '../Service/Service';
 
 const Services = () => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  console.log(products);
   useEffect(() => {
-    fetch("https://bike-buzz.herokuapp.com/mainServices")
+    fetch("https://bike-buzz.herokuapp.com/products")
       .then(res => res.json())
-      .then(data => setProducts(data))
-  }, [])
+      .then(data => {
+        const sliceData = data.slice(0, 6);
+        setProducts(sliceData);
+      })
+  }, []);
   return (
     <Container>
       <Typography variant="h4" sx={{ fontWeight: 600, color: '#666', py: 3 }}>
