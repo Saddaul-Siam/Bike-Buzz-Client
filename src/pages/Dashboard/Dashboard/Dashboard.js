@@ -23,6 +23,7 @@ import AddAProducts from '../Admin/AddAProducts/AddAProducts';
 import ManageProducts from '../Admin/ManageProducts/ManageProducts';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import Pay from '../Pay/Pay';
+import { makeStyles } from '@mui/styles';
 const drawerWidth = 350;
 
 function Dashboard(props) {
@@ -35,6 +36,17 @@ function Dashboard(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const useStyle = makeStyles({
+    menuStyle: {
+      textDecoration: 'none',
+      color: 'black',
+      display: 'block',
+      paddingBottom:5,
+      marginBottom:10,
+      fontSize:'24px !important'
+    }
+  })
+  const { menuStyle } = useStyle()
   const drawer = (
     <div>
       <Toolbar />
@@ -42,16 +54,16 @@ function Dashboard(props) {
       {admin ? "" : <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
         <List>
           <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "24px" }}>Welcome <span style={{ color: '#6047EC' }}>{user.displayName}</span></Typography>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/pay`}><Button color="inherit" sx={{ px: 0 }}>Pay</Button></Link>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></Link>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/review`}><Button color="inherit">Review</Button></Link>
-          <br />
-          <Button color="inherit" onClick={logOut}>Log Out</Button>
-          <br />
-          <Link style={{ textDecoration: 'none', color: 'black' }} to="/explore"><Button color="inherit">Continue to shopping</Button></Link>
+
+          <Link className={menuStyle} to={`${url}/pay`}><Button sx={{ fontWeight: 700 }} color="inherit">Pay</Button></Link>
+
+          <Link className={menuStyle} to={`${url}/myOrders`}><Button sx={{ fontWeight: 700 }} color="inherit">My Orders</Button></Link>
+
+          <Link className={menuStyle} to={`${url}/review`}><Button sx={{ fontWeight: 700 }} color="inherit">Review</Button></Link>
+
+          <Link className={menuStyle} to="/explore"><Button sx={{ fontWeight: 700 }} color="inherit">Continue to shopping</Button></Link>
+
+          <Button color="inherit" sx={{ fontWeight: 700 }} onClick={logOut}>Log Out</Button>
         </List>
       </Box >}
 
@@ -59,16 +71,16 @@ function Dashboard(props) {
         admin && <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
           <List>
             <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "24px" }}>Welcome <span style={{ color: '#6047EC' }}>{user.displayName}</span></Typography>
-            <br />
-            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageAllOrders`}><Button color="inherit" sx={{ px: 0 }}>Manage All Orders</Button></Link>
-            <br />
-            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addAProduct`}><Button color="inherit">Add A Product</Button></Link>
-            <br />
-            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-            <br />
-            <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
-            <br />
-            <Button color="inherit" onClick={logOut}>Log Out</Button>
+
+            <Link className={menuStyle} to={`${url}/manageAllOrders`}><Button sx={{ fontWeight: 700,pt:3}} color="inherit">Manage All Orders</Button></Link>
+
+            <Link className={menuStyle} to={`${url}/addAProduct`}><Button sx={{ fontWeight: 700 }} color="inherit">Add A Product</Button></Link>
+
+            <Link className={menuStyle} to={`${url}/makeAdmin`}><Button sx={{ fontWeight: 700 }} color="inherit">Make Admin</Button></Link>
+
+            <Link className={menuStyle} to={`${url}/manageProducts`}><Button sx={{ fontWeight: 700 }} color="inherit">Manage Products</Button></Link>
+
+            <Button sx={{ fontWeight: 700 }} color="inherit" onClick={logOut}>Log Out</Button>
           </List>
         </Box >
       }

@@ -10,7 +10,7 @@ const DiscountSections = () => {
   const history = useHistory()
   const useStyle = makeStyles({
     background: {
-      backgroundImage: `url("https://i.ibb.co/2q1DsNr/sebastien-gabriel-Ri-Re-CZqe-As-unsplash-1.png"), linear-gradient(#a9a9a9,#685d5d)`,
+      backgroundImage: `url("https://i.ibb.co/2q1DsNr/sebastien-gabriel-Ri-Re-CZqe-As-unsplash-1.png")`,
       backgroundBlendMode: 'overlay',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
