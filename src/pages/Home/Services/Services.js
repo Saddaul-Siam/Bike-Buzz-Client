@@ -15,7 +15,7 @@ const Services = () => {
   }, []);
   return (
     <Container>
-      <Typography variant="h4" sx={{ fontWeight: 600, color: '#666', py: 3 }}>
+      <Typography variant="h4" sx={{ fontWeight: 700, fontSize: "34px", color: '#666', py: 5 }}>
         WORLD BEST BIKE COLLECTIONS
       </Typography>
       <Grid container spacing={2} >

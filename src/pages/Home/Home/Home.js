@@ -5,6 +5,7 @@ import useAuth from '../../../Hooks/useAuth';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner';
+import DiscountSections from '../DiscountSection/DiscountSections/DiscountSections';
 import Reviews from '../Reviews/Reviews';
 import Services from '../Services/Services';
 
@@ -18,6 +19,7 @@ const Home = () => {
       <Navigation></Navigation>
       <Banner></Banner>
       <Services></Services>
+      <DiscountSections></DiscountSections>
       <Reviews></Reviews>
       <Footer></Footer>
     </div>

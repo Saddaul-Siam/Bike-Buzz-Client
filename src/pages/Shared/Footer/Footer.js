@@ -14,7 +14,6 @@ const Footer = () => {
         },
         bg: {
             backgroundColor: '#6047EC !important',
-            marginTop: '100px'
         },
         display: {
             [theme.breakpoints.down('md')]: {
