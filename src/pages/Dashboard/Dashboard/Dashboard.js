@@ -72,7 +72,7 @@ function Dashboard(props) {
           <List>
             <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "24px" }}>Welcome <span style={{ color: '#6047EC' }}>{user.displayName}</span></Typography>
 
-            <Link className={menuStyle} to={`${url}/manageAllOrders`}><Button sx={{ fontWeight: 700,pt:3}} color="inherit">Manage All Orders</Button></Link>
+            <Link className={menuStyle} to={`${url}/manageAllOrders`}><Button sx={{ fontWeight: 700,mt:3}} color="inherit">Manage All Orders</Button></Link>
 
             <Link className={menuStyle} to={`${url}/addAProduct`}><Button sx={{ fontWeight: 700 }} color="inherit">Add A Product</Button></Link>
 
