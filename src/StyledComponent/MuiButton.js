@@ -8,23 +8,29 @@ const PrimaryButton = styled(Button)({
     borderRadius: '52px',
     border: 0,
     outline: 0,
+    fontSize: '14px',
+    fontWeight:"bolder"
 });
 
 export const DeleteButton = styled(Button)({
-    background: 'linear-gradient(#DC143C,#DC143C)',
+    background: 'linear-gradient(#DC3545,#DC143C)',
     color: '#fff',
     padding: '8px 20px',
     borderRadius: '52px',
     border: 0,
     outline: 0,
+    fontSize: '14px',
+    fontWeight:"bolder"
 })
 export const SuccessButton = styled(Button)({
-    background: 'linear-gradient(#006400,#599a59)',
+    background: 'linear-gradient(#198754,#599a59)',
     color: '#fff',
     padding: '8px 20px',
     borderRadius: '52px',
     border: 0,
     outline: 0,
+    fontSize: '14px',
+    fontWeight:"bolder"
 })
 
 export default PrimaryButton;

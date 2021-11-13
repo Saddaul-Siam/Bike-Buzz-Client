@@ -20,20 +20,19 @@ const ManageAllOrders = () => {
   }, [orders])
   return (
     <Box>
-      <Typography sx={{ fontWeight: 'bold' }} variant="h4">Manage All Orders</Typography>
-      <Typography sx={{ py: 3, fontWeight: 600 }} variant="body1">Orders Here {orders.length}</Typography>
+      <Typography sx={{ fontWeight: 'bold', color: '#FF1493',display: 'flex', justifyContent: 'center',py:5}} variant="h4">Manage All Orders</Typography>
       <TableContainer TableContainer component={Paper} >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>User Name</TableCell>
-              <TableCell>User Email</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Price</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Product Name</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Address</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">City</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Status</TableCell>
-              <TableCell sx={{ fontWeight: 600, fontSize: 20 }} width="50px" align="left">Action</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">User Name</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">User Email</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">Price</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">Product Name</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">Address</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">City</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">Status</TableCell>
+              <TableCell sx={{ fontWeight: 600, fontSize: 20,color:"#198754" }} width="50px" align="left">Action</TableCell>
             </TableRow>
           </TableHead>
           {

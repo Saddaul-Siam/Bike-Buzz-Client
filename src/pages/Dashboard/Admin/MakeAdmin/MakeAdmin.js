@@ -55,11 +55,11 @@ const MakeAdmin = () => {
   return (
     <Container>
       <Box >
-        <Typography variant="h5" sx={{ fontWeight: 600, pb: 3 }}>Make A Admin</Typography>
+        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#FF1493', display: 'flex', justifyContent: 'center', py: 5 }} >Make A Admin</Typography>
         <form onSubmit={handleAdminSubmit}>
           <TextField
             required
-            sx={{ width: '50%' }}
+            sx={{ width: '75%' }}
             label="Email"
             type="email"
             onChange={handleChange}

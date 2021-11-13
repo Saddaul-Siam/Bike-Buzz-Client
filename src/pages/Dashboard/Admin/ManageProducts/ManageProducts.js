@@ -19,9 +19,7 @@ const ManageProducts = () => {
 
   return (
     <Box>
-      <Typography sx={{ fontWeight: 'bold' }} variant="h4">Manage Products</Typography>
-      <Typography sx={{ py: 3, fontWeight: 600 }} variant="body1">Products Here {products.length}</Typography>
-
+      <Typography sx={{ fontWeight: 'bold', color: '#FF1493', display: 'flex', justifyContent: 'center', py: 5 }} variant="h4">Manage Products</Typography>
       <TableContainer component={Paper} >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

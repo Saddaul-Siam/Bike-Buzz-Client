@@ -42,7 +42,7 @@ const AddAProducts = () => {
   return (
     <Container>
       <Box >
-        <Typography variant="h5" sx={{ fontWeight: 600, pb: 3 }}>Add a Products</Typography>
+        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#FF1493',display: 'flex', justifyContent: 'center',py:5}} >Add a Products</Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
 
           <TextField style={{ width: '100%' }} label="Products name"  {...register("name")} type="text" variant="outlined" required />

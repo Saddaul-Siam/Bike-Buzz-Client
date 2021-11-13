@@ -23,7 +23,7 @@ import AddAProducts from '../Admin/AddAProducts/AddAProducts';
 import ManageProducts from '../Admin/ManageProducts/ManageProducts';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import Pay from '../Pay/Pay';
-const drawerWidth = 300;
+const drawerWidth = 350;
 
 function Dashboard(props) {
   const { window } = props;
@@ -41,7 +41,7 @@ function Dashboard(props) {
       <Divider />
       {admin ? "" : <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
         <List>
-          <Typography variant="body1" sx={{ fontWeight: 600 }}>Welcome {user.displayName}</Typography>
+          <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "24px" }}>Welcome <span style={{ color: '#6047EC' }}>{user.displayName}</span></Typography>
           <br />
           <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/pay`}><Button color="inherit" sx={{ px: 0 }}>Pay</Button></Link>
           <br />
@@ -58,7 +58,7 @@ function Dashboard(props) {
       {
         admin && <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'start' }}>
           <List>
-            <Typography variant="body1" sx={{ fontWeight: 600 }}>Welcome {user.displayName}</Typography>
+            <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "24px" }}>Welcome <span style={{ color: '#6047EC' }}>{user.displayName}</span></Typography>
             <br />
             <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageAllOrders`}><Button color="inherit" sx={{ px: 0 }}>Manage All Orders</Button></Link>
             <br />

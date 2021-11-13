@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useAuth from '../../../Hooks/useAuth';
 import { DeleteButton } from '../../../StyledComponent/MuiButton';
+import { Typography } from '@mui/material';
 
 
 const MyOrders = () => {
@@ -52,7 +53,7 @@ const MyOrders = () => {
   }
   return (
     <div>
-      <h2>My All Orders : {orders.length}</h2>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#FF1493', display: 'flex', justifyContent: 'center',py:5}}>My All Orders </Typography>
       <TableContainer component={Paper}>
         <Table sx={{}} aria-label="Appointments table">
           <TableHead>

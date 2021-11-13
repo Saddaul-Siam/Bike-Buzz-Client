@@ -55,7 +55,7 @@ const AddReview = () => {
   return (
     <Container>
       <Box >
-        <Typography variant="h5" sx={{ fontWeight: 600, pb: 3 }}>Review our services</Typography>
+        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#FF1493', display: 'flex', justifyContent: 'center', py: 5 }}>Review our services</Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField style={{ width: '100%', height: '50px' }} label="Name" value={user.displayName} {...register("name")} variant="outlined" required />
           <br />
@@ -63,7 +63,7 @@ const AddReview = () => {
           <TextField style={{ width: '100%', height: '50px' }} label="Email" value={user.email} {...register("email")} variant="outlined" required />
 
           <textarea className={textArea} rows={5} placeholder="Review" {...register("review")} required /> <br />
-          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+          <Typography variant="h6" sx={{ fontWeight: 600,pb:3 }}>
             Please Rating now
           </Typography>
           <select className={rating} {...register("rating")} required>
