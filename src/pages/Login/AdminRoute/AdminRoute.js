@@ -1,4 +1,4 @@
-import { Redirect, Route,  useRouteMatch } from "react-router";
+import { Redirect, Route, useRouteMatch } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import { CircularProgress } from '@mui/material';
 import { Box } from "@mui/system";
@@ -6,8 +6,11 @@ import { Box } from "@mui/system";
 const AdminRoute = ({ children, ...rest }) => {
   const { user, admin, isLoading } = useAuth();
 
-  let { url } = useRouteMatch();
+  // let { url } = useRouteMatch();
   if (isLoading) {
+    return <Box sx={{ display: 'flex', justifyContent: 'center' }}><CircularProgress /></Box>
+  }
+  else if (!admin) {
     return <Box sx={{ display: 'flex', justifyContent: 'center' }}><CircularProgress /></Box>
   }
   return (
@@ -19,7 +22,8 @@ const AdminRoute = ({ children, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: `${url}`,
+              pathname: '/',
+              // pathname: `${url}`,
               state: { from: location }
             }}
           />
