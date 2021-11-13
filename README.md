@@ -15,4 +15,4 @@
 
 * world best bike Collection is here
 
-* This is a trusted and useful website
+* This is a useful and  trusted website
