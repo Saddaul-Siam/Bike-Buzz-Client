@@ -15,6 +15,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
+import PrimaryButton, { DeleteButton } from '../../../StyledComponent/MuiButton';
 
 
 function HideOnScroll(props) {
@@ -86,8 +87,15 @@ const Navigation = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      {user?.email && <MenuItem onClick={handleMenuClose}>{user.displayName}</MenuItem>}
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        {user?.email && <MenuItem onClick={handleMenuClose}>{user.displayName}</MenuItem>}
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        {user?.email && <MenuItem onClick={handleMenuClose}>{user.email}</MenuItem>}
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        {user?.email && <MenuItem onClick={handleMenuClose}><PrimaryButton color="inherit" onClick={logOut}>Log Out</PrimaryButton></MenuItem>}
+      </Box>
     </Menu>
   );
 
@@ -116,13 +124,8 @@ const Navigation = (props) => {
       </MenuItem>
 
       {user?.email && <MenuItem> <Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard"><Button color="inherit">Dashboard</Button></Link> </MenuItem>}
-
-      <MenuItem>
-        {user.email ?
-          <Button color="inherit" onClick={logOut}>Log Out</Button>
-          : <Link style={{ textDecoration: 'none', color: 'black' }} to="/login"><Button color="inherit">Login</Button></Link>}
-      </MenuItem>
-
+      {user.email ? '' : <MenuItem><Link style={{ textDecoration: 'none', color: 'black' }} to="/login"><Button color="inherit">Login</Button></Link> </MenuItem>}
+      
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -159,9 +162,7 @@ const Navigation = (props) => {
                 <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/explore">Explore</Link></Button>
                 {user?.email &&
                   <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">Dashboard</Link></Button>}
-                {user.email ?
-                  <Button color="inherit" onClick={logOut}>Log Out</Button>
-                  : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit">Login</Button></Link>}
+                {user.email ? '' : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit">Login</Button></Link>}
                 {user.email && <IconButton
                   size="large"
                   edge="end"
