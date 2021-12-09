@@ -4,7 +4,6 @@ import Service from '../Service/Service';
 
 const Services = () => {
   const [products, setProducts] = useState([]);
-  console.log(products);
   useEffect(() => {
     fetch("https://bike-buzz.herokuapp.com/products")
       .then(res => res.json())
@@ -15,7 +14,13 @@ const Services = () => {
   }, []);
   return (
     <Container>
-      <Typography variant="h4" sx={{ fontWeight: 700, fontSize: "34px", color: '#666', py: 5 }}>
+      <Typography   sx={{
+          fontSize: "2rem",
+          fontWeight: 600,
+          pb: 1,
+          mb: 5,
+          borderBottom: '3px solid #DAA520',
+        }}>
         WORLD BEST BIKE COLLECTIONS
       </Typography>
       <Grid container spacing={2} >

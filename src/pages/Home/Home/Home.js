@@ -5,6 +5,7 @@ import useAuth from '../../../Hooks/useAuth';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner';
+import BestSellerBikes from '../BestSellerBikes/BestSellerBikes/BestSellerBikes';
 import DiscountSections from '../DiscountSection/DiscountSections/DiscountSections';
 import Reviews from '../Reviews/Reviews';
 import Services from '../Services/Services';
@@ -16,12 +17,13 @@ const Home = () => {
   }
   return (
     <div>
-      <Navigation></Navigation>
-      <Banner></Banner>
-      <Services></Services>
-      <DiscountSections></DiscountSections>
-      <Reviews></Reviews>
-      <Footer></Footer>
+      <Navigation/>
+      <Banner/>
+      <Services/>
+      <DiscountSections/>
+      <BestSellerBikes/>
+      <Reviews/>
+      <Footer/>
     </div>
   );
 };
