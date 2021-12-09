@@ -5,6 +5,11 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import PrimaryButton from '../../../../StyledComponent/MuiButton';
 import Timer from '../Timer/Timer';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
+
+
 
 const DiscountSections = () => {
   const history = useHistory();
@@ -49,7 +54,7 @@ const DiscountSections = () => {
     }
 
   })
-  const { background, discountBackground, imgPadding, timerColor, title,subTitle } = useStyle();
+  const { background, discountBackground, imgPadding, timerColor, title, subTitle } = useStyle();
 
   const handleClick = () => {
     console.log('click');
@@ -59,7 +64,7 @@ const DiscountSections = () => {
     <Box className={background}>
       <Container className={discountBackground}>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={6} >
+          <Grid data-aos="fade-down-right" item xs={12} md={6} >
             <Typography variant="h2" className={imgPadding}>
               <img style={{ width: '100%' }} src="https://i.ibb.co/VjKRgpD/aprilia-rsv-1000.png" alt="" />
             </Typography>
