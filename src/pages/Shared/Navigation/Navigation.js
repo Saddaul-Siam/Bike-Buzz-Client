@@ -17,6 +17,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@mui/styles";
 import PrimaryButton from "../../../StyledComponent/MuiButton";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Avatar from "@mui/material/Avatar";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -138,7 +139,7 @@ const Navigation = (props) => {
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         {user?.email && (
           <MenuItem onClick={handleMenuClose}>
-            <PrimaryButton color="inherit" onClick={logOut}>
+            <PrimaryButton color="primary" onClick={logOut}>
               Log Out
             </PrimaryButton>
           </MenuItem>
@@ -206,7 +207,7 @@ const Navigation = (props) => {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <span>Profile</span>
       </MenuItem>
     </Menu>
   );
@@ -227,7 +228,7 @@ const Navigation = (props) => {
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <Button color="inherit">
+                <Button color="primary">
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
                     to="/home"
@@ -235,7 +236,7 @@ const Navigation = (props) => {
                     Home
                   </Link>
                 </Button>
-                <Button color="inherit">
+                <Button color="primary">
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
                     to="/explore"
@@ -244,7 +245,7 @@ const Navigation = (props) => {
                   </Link>
                 </Button>
                 {user?.email && (
-                  <Button color="inherit">
+                  <Button color="primary">
                     <Link
                       style={{ textDecoration: "none", color: "white" }}
                       to="/dashboard"
@@ -273,7 +274,11 @@ const Navigation = (props) => {
                     onClick={handleProfileMenuOpen}
                     color="inherit"
                   >
-                    <AccountCircle />
+                    {user.photoURL ? (
+                      <Avatar alt="profile" src={user?.photoURL} />
+                    ) : (
+                      <AccountCircle />
+                    )}
                   </IconButton>
                 )}
               </Box>
@@ -295,7 +300,7 @@ const Navigation = (props) => {
       </HideOnScroll>
       <ScrollTop {...props}>
         <Fab
-          sx={{ background: "#FF3987" ,color: "#FFFFFF"}}
+          sx={{ background: "#FF3987", color: "#FFFFFF" }}
           color="primary"
           size="small"
           aria-label="scroll back to top"
