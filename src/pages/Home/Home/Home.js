@@ -7,10 +7,10 @@ import Navigation from "../../Shared/Navigation/Navigation";
 import Banner from "../Banner/Banner";
 import BestSellerBikes from "../BestSellerBikes/BestSellerBikes/BestSellerBikes";
 import BlogPosts from "../BlogPosts/BlogPosts/BlogPosts";
+import Contact from "../Contact/Contact";
 import DiscountSections from "../DiscountSection/DiscountSections/DiscountSections";
 import Reviews from "../Reviews/Reviews";
 import Services from "../Services/Services";
-import Subscribe from "../Subscribe/Subscribe";
 
 const Home = () => {
   const { isLoading } = useAuth();
@@ -30,7 +30,7 @@ const Home = () => {
       <BestSellerBikes />
       <BlogPosts />
       <Reviews />
-      <Subscribe />
+      <Contact />
       <Footer />
     </div>
   );
