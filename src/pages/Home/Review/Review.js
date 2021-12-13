@@ -6,7 +6,6 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box } from "@mui/system";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,7 +37,7 @@ const Review = ({ review }) => {
       >
         <Paper
           elevation={0}
-          sx={{ minHeight: "350px", maxHeight: "350px", px: 2, py: 5 }}
+          sx={{ minHeight: "350px",  px: 2, py: 5 }}
         >
           <Box sx={{ display: "flex", justifyContent: "center", p: 0, m: 0 }}>
             {review.img ? (
@@ -84,7 +83,7 @@ const Review = ({ review }) => {
             <ExpandMoreIcon />
           </ExpandMore>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Typography paragraph>
+            <Typography variant="body" color="text.secondary">
               {review.review
                 .split(" ")
                 .slice(25, 10000)

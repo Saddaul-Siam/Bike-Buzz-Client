@@ -6,6 +6,7 @@ import Footer from "../../Shared/Footer/Footer";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Banner from "../Banner/Banner";
 import BestSellerBikes from "../BestSellerBikes/BestSellerBikes/BestSellerBikes";
+import BlogPosts from "../BlogPosts/BlogPosts/BlogPosts";
 import DiscountSections from "../DiscountSection/DiscountSections/DiscountSections";
 import Reviews from "../Reviews/Reviews";
 import Services from "../Services/Services";
@@ -27,6 +28,7 @@ const Home = () => {
       <Services />
       <DiscountSections />
       <BestSellerBikes />
+      <BlogPosts />
       <Reviews />
       <Subscribe />
       <Footer />
