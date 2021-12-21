@@ -58,7 +58,7 @@ const DiscountSections = () => {
 
   const handleClick = () => {
     console.log('click');
-    history.push("/orders/618bfc58dd92a1d8cb2a988d")
+    history.push("/orders/61c16bf853d8c3dcd8c9be5f")
   }
   return (
     <Box className={background}>
